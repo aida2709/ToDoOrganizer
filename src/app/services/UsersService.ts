@@ -11,7 +11,7 @@ export class UsersService {
         if (email == "test@test.com" && password == "test") {
             this.user = new User();
             this.user.Email = email;
-            this.user.Username = "Test";
+            this.user.Username = "Username";
             this.user.RememberMe = rememberMe;
 
             localStorage.setItem('loggedUser', JSON.stringify(this.user));
