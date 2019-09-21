@@ -1,39 +1,49 @@
-<form [formGroup]="loginForm">
-    <div>
-        <div *ngIf="isError==true">
-            <div>
+<div class="container">
+    <form [formGroup]="loginForm" class="login-form">
+
+        <div>
+            <div *ngIf="isError==true" class="error">
                 {{errorMessage}}
             </div>
+
+            <div>
+                <img src="../../../assets/icons/logo.png" class="logo-img">
+            </div>
+
+            <div class="form-control">
+                <input type="text" class="form-input" [formControl]="loginForm.controls['email']"
+                    [ngClass]="{'has-error':!loginForm.controls['email'].valid}" placeholder="{{'_EMAIL' | translate}}"
+                    name="emailInput">
+            </div>
+
+            <div class="form-control">
+                <input type="password" class="form-input" id="passwordId" [formControl]="loginForm.controls['password']"
+                    [ngClass]="{'has-error':!loginForm.controls['password'].valid}"
+                    placeholder="{{'_PASSWORD' | translate}}" name="passwordInput">
+
+                <span class="fa fa-lg fa-eye toggle-password" (click)="toggle()" id="togglePassword"></span>
+            </div>
+
+            <div class="row login-form-section">
+                <div class="col m--align-left m-login__form-left">
+                    <label class="m-checkbox  m-checkbox--focus">
+                        <input type="checkbox" name="rememberMe" [formControl]="loginForm.controls['rememberMe']">
+                        {{'_REMEMBER_ME' | translate}}
+                        <span></span>
+                    </label>
+                </div>
+                <div class="col m--align-right m-login__form-right">
+                    <a href="javascript:;" id="m_login_forget_password"
+                        class="m-link">{{'_FORGET_PASSWORD' | translate}}</a>
+                </div>
+            </div>
+
+            <div>
+                <button class="signin-button" (click)="onSignInClicked(loginForm.value)"
+                    [disabled]="!loginForm.valid">{{'_SIGN_IN' | translate}}</button>
+            </div>
+
         </div>
 
-
-        <div>
-            <label>{{'_EMAIL' | translate}}</label>
-            <input type="text" [formControl]="loginForm.controls['email']"
-                [ngClass]="{'has-error':!loginForm.controls['email'].valid}" placeholder="{{'_ENTER_EMAIL' | translate}}"
-                name="emailInput">
-        </div>
-
-        <div>
-            <label>{{'_PASSWORD' | translate}}</label>
-            <input type="password" [formControl]="loginForm.controls['password']"
-                [ngClass]="{'has-error':!loginForm.controls['password'].valid}" placeholder="{{'_ENTER_PASSWORD' | translate}}"
-                name="passwordInput">
-        </div>
-
-        <div>
-            <label>{{'_REMEMBER_ME' | translate}}</label>
-            <input type="checkbox" [formControl]="loginForm.controls['rememberMe']">
-        </div>
-
-        <div>
-            <label>{{'_FORGET_PASSWORD' | translate}}</label>
-        </div>
-
-        <div>
-            <button (click)="onSignInClicked(loginForm.value)" [disabled]="!loginForm.valid">{{'_SIGN_IN' | translate}}</button>
-        </div>
-
-    </div>
-
-</form>
+    </form>
+</div>

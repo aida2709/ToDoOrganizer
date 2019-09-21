@@ -15,6 +15,7 @@ import { TranslateService } from 'src/app/services/translate';
 export class LoginCompoent implements OnInit {
     private isError: boolean = false;
     private errorMessage: string;
+    private showPassword = false;
     loginForm: FormGroup;
 
     constructor(_formBuilder: FormBuilder, private _usersService: UsersService, private router: Router, private _translateService: TranslateService) {
@@ -47,4 +48,16 @@ export class LoginCompoent implements OnInit {
             this.errorMessage = this._translateService.instant("_USER_DATA_NOT_VALID");
         }
     }
+
+    toggle() {
+        this.showPassword = !this.showPassword;
+        if (this.showPassword) {
+            document.getElementById('passwordId').setAttribute('type', 'text');
+            document.getElementById('togglePassword').className="fa fa-lg fa-eye-slash toggle-password";
+        } else {
+            document.getElementById('passwordId').setAttribute('type', 'password');
+            document.getElementById('togglePassword').className="fa fa-lg fa-eye toggle-password";
+
+        }
+      }
 }

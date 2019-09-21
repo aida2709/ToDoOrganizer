@@ -16,7 +16,7 @@ import { ToDoComponent } from './components/ToDo/todo.component';
 const appRoutes: Routes = [
   { path: 'login', component: LoginCompoent },
   { path: 'home', component: ToDoComponent },
-  { path: '', component: LoginCompoent }
+  { path: '', component: ToDoComponent }
 
 ];
 

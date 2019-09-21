@@ -26,7 +26,7 @@ export class UsersService {
 
         if (data) {
             this.user = JSON.parse(data);
-            if (this.user && this.user.RememberMe == true) {
+            if (this.user /* && this.user.RememberMe == true */) {
                 return true;
             }
             return false;
