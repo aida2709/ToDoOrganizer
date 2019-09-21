@@ -1,0 +1,34 @@
+<div>
+    <h4>{{'_TODO_LIST' | translate}}</h4>
+    <button (click)="onAddToDoItemClicked()">Add</button>
+    <hr>
+    <br>
+
+    <ul>
+        <li *ngIf="newToDo!=null">
+            <input type="checkbox" [(ngModel)]="newToDo.IsFinished" name="IsFinished">
+            <input type="text" [(ngModel)]="newToDo.Title" (keyup.enter)="addToDo()" name="Title">
+        </li>
+
+        <li *ngFor="let item of todoList">
+            <input type="checkbox" value="{item.IsFinished}" [(ngModel)]="item.IsFinished" (change)="onToDoItemStatusChanged(item)">
+
+            {{item.Title}}
+        </li>
+    </ul>
+</div>
+
+<div>
+    <h4>{{'_DONE_LIST' | translate}}</h4>
+    <button (click)="onDeleteAllClicked()">Delete All</button>
+    <hr>
+    <br>
+
+    <ul>
+        <li *ngFor="let item of doneList">
+            <input type="checkbox" value="{item.IsFinished}" [(ngModel)]="item.IsFinished" (change)="onDoneItemStatusChanged(item)">
+
+            {{item.Title}}
+        </li>
+    </ul>
+</div>

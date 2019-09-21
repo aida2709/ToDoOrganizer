@@ -11,6 +11,7 @@ import { ToDoItem } from 'src/app/interfaces/ToDoItem';
 })
 
 export class ToDoComponent implements OnInit {
+    public newToDo: ToDoItem;
     public todoList: ToDoItem[];
     public doneList: ToDoItem[];
 
@@ -20,7 +21,55 @@ export class ToDoComponent implements OnInit {
 
 
     ngOnInit(): void {
+        this.getToDoList();
+        this.getDoneList();
+    }
+
+    getToDoList() {
         this.todoList = this._todoService.getTodoList();
+    }
+
+    getDoneList() {
         this.doneList = this._todoService.getDoneList();
+    }
+
+    onAddToDoItemClicked() {
+        this.newToDo = new ToDoItem();
+        this.newToDo.Title = '';
+        this.newToDo.IsFinished = false;
+    }
+
+    addToDo() {
+        if (this.newToDo.Title.trim() == '') {
+            return;
+        }
+
+        if (this.newToDo.IsFinished == true) {
+            this._todoService.addDone(this.newToDo);
+            this.getDoneList();
+        }
+        else {
+            this._todoService.addToDo(this.newToDo);
+            this.getToDoList();
+        }
+
+        this.newToDo = null;
+    }
+
+    onToDoItemStatusChanged(item: ToDoItem) {
+        if(this._todoService.removeToDoItem(item)){
+            this._todoService.addDone(item);
+            this.getToDoList();
+            this.getDoneList();
+        }
+    }
+
+
+    onDoneItemStatusChanged(item: ToDoItem) {
+        if(this._todoService.removeDoneItem(item)){
+            this._todoService.addToDo(item);
+            this.getToDoList();
+            this.getDoneList();
+        }
     }
 }
