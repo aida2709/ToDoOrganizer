@@ -1,23 +1,16 @@
-<!-- <div>
-    <img src="../../../assets/icons/logo.png">
-
-    <img src="../../../assets/icons/avatar.png">
-    <span>{{username}}</span>
-
-    <div>
-        <button (click)="onLogoutClicked()">Logout</button>
-    </div>
-</div> -->
-
 <div class="navigation-bar">
     <div id="navigation-container">
         <img src="../../../assets/icons/logo.png" class="logoImg">
 
         <ul id="menu">
-            <li>
+            <li (click)="onShowDropdownClicked()">
                 <div class="username">{{username}}</div>
+                <a class="btn" ></a>
 
-                <a class="btn" href="#"> </a>
+                <div class="dropdown-content" *ngIf="showDropdown">
+                    <img src="../../../assets/icons/logout.png" class="logoutImg">
+                    <a  (click)="onLogoutClicked()" class="logout">{{'_LOGOUT' | translate}}</a>
+                </div>
             </li>
         </ul>
     </div>

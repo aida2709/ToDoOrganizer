@@ -68,3 +68,31 @@
     font-size: 12px;
     font-weight: bold;
   }
+
+  .dropdown-content {
+   /*  display: none; */
+   position: absolute;
+   right: 250px;
+   top: 50px;
+   background-color: #f9f9f9;
+   min-width: 160px;
+   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+   z-index: 1;
+  }
+  
+  .logout {
+    color: black;
+    padding: 12px 16px;
+    font-size:12px!important;
+    line-height:20px!important;
+    text-decoration: none;
+    display: block;
+    margin-right: 40px;
+  }
+
+  .logoutImg{
+    position: absolute;
+    float: left;
+    left: 5px;
+    top: 5px;
+  }
