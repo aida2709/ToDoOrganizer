@@ -81,6 +81,10 @@ export class ToDoService {
         return false;
     }
 
+    public removeAllDoneItems(){
+        localStorage.removeItem('doneList');
+    }
+
     private getNextId(): number {
         this.todoList = JSON.parse(localStorage.getItem('todoList'));
         this.doneList = JSON.parse(localStorage.getItem('doneList'));
