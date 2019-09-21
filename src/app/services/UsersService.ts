@@ -12,7 +12,7 @@ export class UsersService {
             this.user = new User();
             this.user.Email = email;
             this.user.Username = "Test";
-            this.user.RememberMe=rememberMe;
+            this.user.RememberMe = rememberMe;
 
             localStorage.setItem('loggedUser', JSON.stringify(this.user));
 
@@ -34,7 +34,16 @@ export class UsersService {
         return false;
     }
 
-    public logout():void {
+    public logout(): void {
         localStorage.removeItem('loggedUser');
+    }
+
+    public getUsername(): string {
+        this.user = JSON.parse(localStorage.getItem('loggedUser'));
+
+        if (this.user)
+            return this.user.Username;
+
+        return '';
     }
 }

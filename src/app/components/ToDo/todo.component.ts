@@ -92,9 +92,4 @@ export class ToDoComponent implements OnInit {
             this.getDoneList();
         }
     }
-
-    onLogoutClicked() {
-        this._usersService.logout();
-        this._router.navigate['/login'];
-    }
 }
