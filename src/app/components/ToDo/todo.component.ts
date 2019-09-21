@@ -64,7 +64,6 @@ export class ToDoComponent implements OnInit {
         }
     }
 
-
     onDoneItemStatusChanged(item: ToDoItem) {
         if (this._todoService.removeDoneItem(item)) {
             this._todoService.addToDo(item);
@@ -77,4 +76,17 @@ export class ToDoComponent implements OnInit {
         this._todoService.removeAllDoneItems();
         this.getDoneList();
     }
+
+    onDeleteToDoItemClicked(item) {
+        if (this._todoService.removeToDoItem(item)) {
+            this.getToDoList();
+        }
+    }
+
+    onDeleteDoneItemClicked(item) {
+        if (this._todoService.removeDoneItem(item)) {
+            this.getDoneList();
+        }
+    }
+
 }

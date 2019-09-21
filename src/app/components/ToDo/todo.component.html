@@ -14,6 +14,8 @@
             <input type="checkbox" value="{item.IsFinished}" [(ngModel)]="item.IsFinished" (change)="onToDoItemStatusChanged(item)">
 
             {{item.Title}}
+
+            <button (click)="onDeleteToDoItemClicked(item)">Delete</button>
         </li>
     </ul>
 </div>
@@ -29,6 +31,8 @@
             <input type="checkbox" value="{item.IsFinished}" [(ngModel)]="item.IsFinished" (change)="onDoneItemStatusChanged(item)">
 
             {{item.Title}}
+
+            <button (click)="onDeleteDoneItemClicked(item)">Delete</button>
         </li>
     </ul>
 </div>
