@@ -8,30 +8,30 @@
 
 
         <div>
-            <label>Email</label>
+            <label>{{'_EMAIL' | translate}}</label>
             <input type="text" [formControl]="loginForm.controls['email']"
-                [ngClass]="{'has-error':!loginForm.controls['email'].valid}" placeholder="Unesite email"
+                [ngClass]="{'has-error':!loginForm.controls['email'].valid}" placeholder="{{'_ENTER_EMAIL' | translate}}"
                 name="emailInput">
         </div>
 
         <div>
-            <label>Password</label>
-            <input type="text" [formControl]="loginForm.controls['password']"
-                [ngClass]="{'has-error':!loginForm.controls['password'].valid}" placeholder="Unesite password"
+            <label>{{'_PASSWORD' | translate}}</label>
+            <input type="password" [formControl]="loginForm.controls['password']"
+                [ngClass]="{'has-error':!loginForm.controls['password'].valid}" placeholder="{{'_ENTER_PASSWORD' | translate}}"
                 name="passwordInput">
         </div>
 
         <div>
-            <label>Remember me</label>
+            <label>{{'_REMEMBER_ME' | translate}}</label>
             <input type="checkbox" [formControl]="loginForm.controls['rememberMe']">
         </div>
 
         <div>
-            <label>Forget your password?</label>
+            <label>{{'_FORGET_PASSWORD' | translate}}</label>
         </div>
 
         <div>
-            <button (click)="onSignInClicked(loginForm.value)" [disabled]="!loginForm.valid">Sign in</button>
+            <button (click)="onSignInClicked(loginForm.value)" [disabled]="!loginForm.valid">{{'_SIGN_IN' | translate}}</button>
         </div>
 
     </div>

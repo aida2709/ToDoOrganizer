@@ -2,6 +2,7 @@ import { OnInit, Component } from '@angular/core';
 import { UsersService } from 'src/app/services/UsersService';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from 'src/app/services/translate';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class LoginCompoent implements OnInit {
     private errorMessage: string;
     loginForm: FormGroup;
 
-    constructor(_formBuilder: FormBuilder, private _usersService: UsersService, private router: Router) {
+    constructor(_formBuilder: FormBuilder, private _usersService: UsersService, private router: Router, private _translateService: TranslateService) {
+        _translateService.use('en');
         if (_usersService.isLogged())
             this.router.navigate(['/home']);
 
@@ -43,7 +45,7 @@ export class LoginCompoent implements OnInit {
         }
         else {
             this.isError = true;
-            this.errorMessage = "Korisnički podaci nisu ispravni";
+            this.errorMessage = this._translateService.instant("_USER_DATA_NOT_VALID");
         }
     }
 }

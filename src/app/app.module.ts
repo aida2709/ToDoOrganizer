@@ -8,6 +8,9 @@ import { LoginCompoent } from './components/Login/login.component';
 import { UsersService } from './services/UsersService';
 import { ToDoService } from './services/ToDoService';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TRANSLATION_PROVIDERS } from './services/translate/translation';
+import { TranslateService } from './services/translate/translate.service';
+import { TranslatePipe } from './services/translate';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginCompoent },
@@ -19,6 +22,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    TranslatePipe,
     LoginCompoent
   ],
   imports: [
@@ -30,7 +34,9 @@ const appRoutes: Routes = [
   ],
   providers: [
     UsersService,
-    ToDoService
+    ToDoService,
+    TRANSLATION_PROVIDERS,
+    TranslateService
   ],
   bootstrap: [AppComponent]
 })
