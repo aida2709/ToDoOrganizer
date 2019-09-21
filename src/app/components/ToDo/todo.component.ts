@@ -2,6 +2,8 @@ import { OnInit, Component } from '@angular/core';
 import { ToDoService } from 'src/app/services/ToDoService';
 import { TranslateService } from 'src/app/services/translate';
 import { ToDoItem } from 'src/app/interfaces/ToDoItem';
+import { UsersService } from 'src/app/services/UsersService';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +17,9 @@ export class ToDoComponent implements OnInit {
     public todoList: ToDoItem[];
     public doneList: ToDoItem[];
 
-    constructor(private _todoService: ToDoService, private _translateService: TranslateService) {
+    constructor(private _todoService: ToDoService, private _translateService: TranslateService,
+        private _usersService: UsersService,
+        private _router: Router) {
 
     }
 
@@ -89,4 +93,8 @@ export class ToDoComponent implements OnInit {
         }
     }
 
+    onLogoutClicked() {
+        this._usersService.logout();
+        this._router.navigate['/login'];
+    }
 }
