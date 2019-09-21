@@ -11,9 +11,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TRANSLATION_PROVIDERS } from './services/translate/translation';
 import { TranslateService } from './services/translate/translate.service';
 import { TranslatePipe } from './services/translate';
+import { ToDoComponent } from './components/ToDo/todo.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginCompoent },
+  { path: 'home', component: ToDoComponent },
   { path: '', component: LoginCompoent }
 
 ];
@@ -23,7 +25,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     TranslatePipe,
-    LoginCompoent
+    LoginCompoent,
+    ToDoComponent
   ],
   imports: [
     BrowserModule,

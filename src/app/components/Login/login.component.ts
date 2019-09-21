@@ -19,9 +19,9 @@ export class LoginCompoent implements OnInit {
 
     constructor(_formBuilder: FormBuilder, private _usersService: UsersService, private router: Router, private _translateService: TranslateService) {
         _translateService.use('en');
-        if (_usersService.isLogged())
+        if (_usersService.isLogged()){
             this.router.navigate(['/home']);
-
+        }
 
         this.loginForm = _formBuilder.group({
             'email': [null, Validators.required],
@@ -39,7 +39,6 @@ export class LoginCompoent implements OnInit {
         var result = this._usersService.login(value.email, value.password, value.rememberMe);
 
         if (result == true) {
-            alert('Uspjeh');
             this.isError = false;
             this.router.navigate['/home'];
         }

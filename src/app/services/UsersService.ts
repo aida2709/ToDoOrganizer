@@ -5,9 +5,9 @@ import { User } from '../interfaces/User';
 @Injectable()
 export class UsersService {
 
-    public user: User;
+    private user: User;
 
-    login(email, password, rememberMe): boolean {
+    public login(email, password, rememberMe): boolean {
         if (email == "test@test.com" && password == "test") {
             this.user = new User();
             this.user.Email = email;
@@ -21,7 +21,7 @@ export class UsersService {
         return false;
     }
 
-    isLogged(): boolean {
+    public isLogged(): boolean {
         var data = localStorage.getItem('loggedUser');
 
         if (data) {
@@ -34,7 +34,7 @@ export class UsersService {
         return false;
     }
 
-    logout():void {
+    public logout():void {
         localStorage.removeItem('loggedUser');
     }
 }
