@@ -11,8 +11,11 @@
     </div>
 
     <div class="col left">
-        <h4>{{'_TODO_LIST' | translate}}</h4>
-        <button (click)="onAddToDoItemClicked()">Add</button>
+        <div class="div-options">
+                <h4>{{'_TODO_LIST' | translate}}</h4>
+                <button (click)="onAddToDoItemClicked()" class="add-btn header-btn"></button>
+        </div>
+       
         <hr>
         <br>
     
@@ -33,8 +36,13 @@
     </div>
     
     <div class="col right">
-        <h4>{{'_DONE_LIST' | translate}}</h4>
-        <button (click)="onDeleteAllDoneItemsClicked()">Delete All</button>
+            <div class="div-options">
+                    <h4>{{'_DONE_LIST' | translate}}</h4>
+                    <button (click)="onDeleteAllDoneItemsClicked()" class="delete-btn header-btn"></button>
+            </div>
+
+        
+        
         <hr>
         <br>
     
