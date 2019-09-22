@@ -1,6 +1,4 @@
-.hasError {
-    border-bottom: 1px solid red;
-}
+
 
 .container {
     position: absolute;
@@ -185,4 +183,12 @@ button, input {
     color: white;
     margin-bottom: 15px;
     border-radius: 2px;
+}
+
+.has-error {
+    border: 1px solid red!important;
+}
+
+.signin-button:disabled{
+    background-color: red!important;
 }

@@ -16,23 +16,28 @@ export class LoginCompoent implements OnInit {
     private errorMessage: string;
     private showPassword = false;
     loginForm: FormGroup;
+    private submitted: boolean=false;
 
     constructor(private _formBuilder: FormBuilder, private _usersService: UsersService, private router: Router, private _translateService: TranslateService) {
-        if (_usersService.isLogged()){
+        if (_usersService.isLogged()) {
             this.router.navigate(['/home']);
         }
     }
 
     ngOnInit(): void {
         this.loginForm = this._formBuilder.group({
-            'email': [null, Validators.required],
-            'password': [null, Validators.required],
+            'email': ['', Validators.required],
+            'password': ['', Validators.required],
             'rememberMe': false
         })
     }
 
 
     onSignInClicked(value: any) {
+        this.submitted=true;
+        if (!this.loginForm.valid)
+            return;
+
         var result = this._usersService.login(value.email, value.password, value.rememberMe);
 
         if (result == true) {
@@ -42,18 +47,18 @@ export class LoginCompoent implements OnInit {
         else {
             this.isError = true;
             this.errorMessage = this._translateService.instant("_USER_DATA_NOT_VALID");
-        } 
+        }
     }
 
     toggle() {
         this.showPassword = !this.showPassword;
         if (this.showPassword) {
             document.getElementById('passwordId').setAttribute('type', 'text');
-            document.getElementById('togglePassword').className="fa fa-lg fa-eye-slash toggle-password";
+            document.getElementById('togglePassword').className = "fa fa-lg fa-eye-slash toggle-password";
         } else {
             document.getElementById('passwordId').setAttribute('type', 'password');
-            document.getElementById('togglePassword').className="fa fa-lg fa-eye toggle-password";
+            document.getElementById('togglePassword').className = "fa fa-lg fa-eye toggle-password";
 
         }
-      }
+    }
 }

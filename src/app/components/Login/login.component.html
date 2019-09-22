@@ -12,14 +12,14 @@
 
             <div class="form-control">
                 <input type="text" class="form-input" [formControl]="loginForm.controls['email']"
-                    [ngClass]="{'has-error':!loginForm.controls['email'].valid}" placeholder="{{'_EMAIL' | translate}}"
-                    name="emailInput">
+                [ngClass]="{'has-error':!loginForm.controls['email'].valid && submitted}"
+                     placeholder="{{'_EMAIL' | translate}}" name="emailInput">
             </div>
 
             <div class="form-control">
-                <input type="password" class="form-input" id="passwordId" [formControl]="loginForm.controls['password']"
-                    [ngClass]="{'has-error':!loginForm.controls['password'].valid}"
-                    placeholder="{{'_PASSWORD' | translate}}" name="passwordInput">
+                <input type="password" class="form-input" [formControl]="loginForm.controls['password']"
+                [ngClass]="{'has-error':!loginForm.controls['password'].valid && submitted}"
+                     placeholder="{{'_PASSWORD' | translate}}" name="passwordInput">
 
                 <span class="fa fa-lg fa-eye toggle-password" (click)="toggle()" id="togglePassword"></span>
             </div>
@@ -40,7 +40,7 @@
 
             <div>
                 <button class="signin-button" (click)="onSignInClicked(loginForm.value)"
-                    [disabled]="!loginForm.valid">{{'_SIGN_IN' | translate}}</button>
+                   >{{'_SIGN_IN' | translate}}</button>
             </div>
 
         </div>
