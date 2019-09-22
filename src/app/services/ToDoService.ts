@@ -9,12 +9,17 @@ export class ToDoService {
 
     public getTodoList() {
         this.todoList = JSON.parse(localStorage.getItem('todoList'));
-        return this.todoList;
+
+        return this.todoList.sort(function (a, b) {
+            return b.Id - a.Id;
+        });
     }
 
     public getDoneList() {
         this.doneList = JSON.parse(localStorage.getItem('doneList'));
-        return this.doneList;
+        return this.doneList.sort(function (a, b) {
+            return b.Id - a.Id;
+        });
     }
 
     public addToDo(toDoItem: ToDoItem) {
@@ -83,7 +88,7 @@ export class ToDoService {
         return false;
     }
 
-    public removeAllDoneItems(): void{
+    public removeAllDoneItems(): void {
         localStorage.removeItem('doneList');
     }
 
@@ -109,13 +114,13 @@ export class ToDoService {
         return id;
     }
 
-    public editToDoItem(editedItem: ToDoItem):void{
+    public editToDoItem(editedItem: ToDoItem): void {
         this.todoList = JSON.parse(localStorage.getItem('todoList'));
 
         if (this.todoList != null) {
             for (let i = 0; i < this.todoList.length; i++) {
                 if (this.todoList[i].Id === editedItem.Id) {
-                    this.todoList.splice(i,1,editedItem)
+                    this.todoList.splice(i, 1, editedItem)
                     localStorage.setItem('todoList', JSON.stringify(this.todoList));
                 }
             }
