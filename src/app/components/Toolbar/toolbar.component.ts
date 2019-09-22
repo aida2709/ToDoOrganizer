@@ -29,7 +29,7 @@ export class ToolbarComponent implements OnInit {
 
     onLogoutClicked() {
         this._usersService.logout();
-        this._router.navigate['/login'];
+        this._router.navigate(['/login']);
     }
 
 }

@@ -7,5 +7,7 @@ export const LANG_EN_TRANS = {
     '_FORGET_PASSWORD': 'Forget your password?',
     '_SIGN_IN': 'Sign in',
     '_USER_DATA_NOT_VALID':'User data is not valid.',
-    '_LOGOUT':'Log out'
+    '_LOGOUT':'Log out',
+    '_TODO_LIST':'To-do list',
+    '_DONE_LIST':'Done list'
 };

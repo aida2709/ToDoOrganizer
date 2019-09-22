@@ -8,8 +8,7 @@ import { TranslateService } from 'src/app/services/translate';
 @Component({
     selector: 'login',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css'],
-    providers: [UsersService]
+    styleUrls: ['./login.component.css']
 })
 
 export class LoginCompoent implements OnInit {
@@ -18,35 +17,32 @@ export class LoginCompoent implements OnInit {
     private showPassword = false;
     loginForm: FormGroup;
 
-    constructor(_formBuilder: FormBuilder, private _usersService: UsersService, private router: Router, private _translateService: TranslateService) {
-        _translateService.use('en');
+    constructor(private _formBuilder: FormBuilder, private _usersService: UsersService, private router: Router, private _translateService: TranslateService) {
         if (_usersService.isLogged()){
             this.router.navigate(['/home']);
         }
+    }
 
-        this.loginForm = _formBuilder.group({
+    ngOnInit(): void {
+        this.loginForm = this._formBuilder.group({
             'email': [null, Validators.required],
             'password': [null, Validators.required],
             'rememberMe': false
         })
     }
 
-    ngOnInit(): void {
-    }
-
 
     onSignInClicked(value: any) {
-
         var result = this._usersService.login(value.email, value.password, value.rememberMe);
 
         if (result == true) {
             this.isError = false;
-            this.router.navigate['/home'];
+            this.router.navigate(['home']);
         }
         else {
             this.isError = true;
             this.errorMessage = this._translateService.instant("_USER_DATA_NOT_VALID");
-        }
+        } 
     }
 
     toggle() {

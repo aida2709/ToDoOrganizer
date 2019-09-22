@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TranslateService } from './services/translate';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ToDoOrganizer';
+
+  constructor(_translateService: TranslateService) {
+    _translateService.use('en');
+  }
 }
