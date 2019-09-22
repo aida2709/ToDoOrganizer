@@ -1,4 +1,6 @@
-.global-container{
+/* List positioning */
+
+.global-container {
     margin-left: 250px;
     margin-right: 250px;
     position: relative;
@@ -7,53 +9,56 @@
     height: 100vh;
 }
 
-.title{
+.title {
     font-weight: bold;
     margin-bottom: 2px;
 }
 
-.subtitle{
-    font-size:12px;
+.subtitle {
+    font-size: 12px;
     padding: 0;
     margin-top: 0;
     margin-bottom: 25px;
     color: gray;
 }
 
-.col{
+.col {
     width: 45%;
-    padding:20px;
+    padding: 20px;
     position: absolute;
     background-color: #f5f6fa;
     height: 100vh;
     border-radius: 10px;
 }
 
-.left{
+.left {
     float: left;
 }
 
-
-.right{
-     float: right;
-     left: 54%;
+.right {
+    float: right;
+    left: 54%;
 }
 
-.div-options{
+/*END List positioning */
+
+/*List header*/
+
+.div-options {
     margin-bottom: 20px;
 }
 
-hr{
+hr {
     background-color: #e2e2e6;
     border: 0.5px solid #e2e2e6;
 }
 
-h4{
+h4 {
     margin: 0;
     display: inline;
 }
 
-.header-btn{
+.header-btn {
     position: absolute;
     float: right;
     right: 22px;
@@ -64,14 +69,121 @@ h4{
     cursor: pointer;
 }
 
- 
-.add-btn{
+.add-btn {
     background: url('../../../assets/icons/add.png') no-repeat padding-box center;
     border: 1px solid #e6e8ef;
     background-color: #e6e8ef;
 }
 
-.delete-btn{
+.delete-btn {
     background: url('../../../assets/icons/delete.png') no-repeat padding-box center;
-    border:none!important;
+    border: none!important;
 }
+
+/*END List header*/
+
+/*List items*/
+
+.card-container {
+    margin-top: 20px;
+}
+
+.card {
+    background: white;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 13px;
+}
+
+.item-btn {
+    float: right;
+    margin-top: -5px;
+    background: url('../../../assets/icons/more.png') no-repeat padding-box center;
+    background-color: transparent;
+    border: none;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.card-checkbox {
+    background: url('../../../assets/icons/checkbox-active.png') no-repeat padding-box center;
+}
+
+/*Checkbox*/
+
+.label-container {
+    position: relative;
+    padding-left: 26px;
+    font-size: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+
+/* .label-container input{
+    
+} */
+
+.label-container input[type=checkbox] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.checkmark {
+    position: absolute;
+    left: 0;
+    height: 18px;
+    width: 18px;
+}
+
+.checkmark-unchecked {
+    background-image: url('../../../assets/icons/checkbox.png')
+}
+
+.checkmark-checked {
+    background-image: url('../../../assets/icons/checkbox-active.png')
+}
+
+.label-container:hover input~.checkmark {
+    background-color: transparent;
+}
+
+.label-container input:checked~.checkmark {
+    background-color: transparent;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/*END Checkbox*/
+
+#newtodo-title {
+    border: none;
+    width: 87%;
+}
+
+#newtodo-title :focus {
+    border: none;
+}
+
+#newtodo-title :checked {
+    border: none;
+}
+
+/*END List items*/

@@ -1,4 +1,3 @@
-
 <toolbar>
 
 </toolbar>
@@ -12,49 +11,56 @@
 
     <div class="col left">
         <div class="div-options">
-                <h4>{{'_TODO_LIST' | translate}}</h4>
-                <button (click)="onAddToDoItemClicked()" class="add-btn header-btn"></button>
+            <h4>{{'_TODO_LIST' | translate}}</h4>
+            <button (click)="onAddToDoItemClicked()" class="add-btn header-btn"></button>
         </div>
-       
+
         <hr>
-        <br>
-    
-        <ul>
-            <li *ngIf="newToDo!=null">
-                <input type="checkbox" [(ngModel)]="newToDo.IsFinished" name="IsFinished">
-                <input type="text" [(ngModel)]="newToDo.Title" (keyup.enter)="addToDo()" name="Title">
-            </li>
-    
-            <li *ngFor="let item of todoList">
-                <input type="checkbox" value="{item.IsFinished}" [(ngModel)]="item.IsFinished" (change)="onToDoItemStatusChanged(item)">
-    
-                {{item.Title}}
-    
-                <button (click)="onDeleteToDoItemClicked(item)">Delete</button>
-            </li>
-        </ul>
-    </div>
-    
-    <div class="col right">
-            <div class="div-options">
-                    <h4>{{'_DONE_LIST' | translate}}</h4>
-                    <button (click)="onDeleteAllDoneItemsClicked()" class="delete-btn header-btn"></button>
+
+        <div class="card-container">
+
+            <div class="card" *ngIf="newToDo!=null">
+                    <label class="label-container">
+                    <input id="newtodo-title" type="text" [(ngModel)]="newToDo.Title" (keyup.enter)="addToDo()" name="Title">
+
+                    <input type="checkbox" name="IsFinished" [(ngModel)]="newToDo.IsFinished" name="IsFinished">
+                    <span class="checkmark checkmark-unchecked"></span>
+                </label>
             </div>
 
-        
-        
+            <div class="card" *ngFor="let item of todoList">
+                <label class="label-container">{{item.Title}}
+                    <input type="checkbox" name="title" value="{item.IsFinished}" [(ngModel)]="item.IsFinished"
+                        (change)="onToDoItemStatusChanged(item)">
+                    <span class="checkmark checkmark-unchecked"></span>
+                </label>
+
+                <button (click)="onDeleteToDoItemClicked(item)" class="item-btn"></button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col right">
+        <div class="div-options">
+            <h4>{{'_DONE_LIST' | translate}}</h4>
+            <button (click)="onDeleteAllDoneItemsClicked()" class="delete-btn header-btn"></button>
+        </div>
+
+
+
         <hr>
         <br>
-    
+
         <ul>
             <li *ngFor="let item of doneList">
-                <input type="checkbox" value="{item.IsFinished}" [(ngModel)]="item.IsFinished" (change)="onDoneItemStatusChanged(item)">
-    
+                <input type="checkbox" value="{item.IsFinished}" [(ngModel)]="item.IsFinished"
+                    (change)="onDoneItemStatusChanged(item)">
+
                 {{item.Title}}
-    
+
                 <button (click)="onDeleteDoneItemClicked(item)">Delete</button>
             </li>
         </ul>
     </div>
 </div>
-
