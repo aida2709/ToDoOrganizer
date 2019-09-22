@@ -3,4 +3,6 @@ export class ToDoItem{
     Title: string;
     Image: string;
     IsFinished:boolean;
+    Position: number;
+
 }

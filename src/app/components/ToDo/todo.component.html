@@ -9,10 +9,8 @@
         <p class="subtitle">{{'_SUBTITLE_CLICK_ON_CHECKBOX' | translate}}</p>
     </div>
 
-    <div class="col left" 
-    cdkDropList #toDoList="cdkDropList" [cdkDropListData]="todoList"
-    [cdkDropListConnectedTo]="[completedList]"
-    (cdkDropListDropped)="onDrop($event)">
+    <div class="col left" cdkDropList #toDoList="cdkDropList" [cdkDropListData]="todoList"
+        [cdkDropListConnectedTo]="[completedList]" (cdkDropListDropped)="onDrop($event)">
         <div class="div-options">
             <h4>{{'_TODO_LIST' | translate}}</h4>
             <button (click)="onAddToDoItemClicked()" class="add-btn header-btn"></button>
@@ -68,10 +66,8 @@
 
     </div>
 
-    <div class="col right"
-    cdkDropList #completedList="cdkDropList" [cdkDropListData]="doneList"
-    [cdkDropListConnectedTo]="[toDoList]"
-    (cdkDropListDropped)="onDrop($event)">
+    <div class="col right" cdkDropList #completedList="cdkDropList" [cdkDropListData]="doneList"
+        [cdkDropListConnectedTo]="[toDoList]" (cdkDropListDropped)="onDrop($event)">
         <div class="div-options">
             <h4>{{'_DONE_LIST' | translate}}</h4>
             <button (click)="onDeleteAllDoneItemsClicked()" class="delete-btn header-btn"></button>
