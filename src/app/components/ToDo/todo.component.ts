@@ -16,6 +16,8 @@ export class ToDoComponent implements OnInit {
     public newToDo: ToDoItem;
     public todoList: ToDoItem[];
     public doneList: ToDoItem[];
+    public selectedItemId:any=null;
+    public showDropdown:boolean=false;
 
     constructor(private _todoService: ToDoService, private _translateService: TranslateService,
         private _usersService: UsersService,
@@ -86,11 +88,19 @@ export class ToDoComponent implements OnInit {
         if (this._todoService.removeToDoItem(item)) {
             this.getToDoList();
         }
+
+        this.showDropdown=false;
+        this.selectedItemId=null;
     }
 
     onDeleteDoneItemClicked(item) {
         if (this._todoService.removeDoneItem(item)) {
             this.getDoneList();
         }
+    }
+
+    onShowDropDownClicked(item:ToDoItem){
+        this.showDropdown=!this.showDropdown;
+        this.selectedItemId=item.Id;
     }
 }

@@ -11,5 +11,7 @@ export const LANG_EN_TRANS = {
     '_TODO_LIST':'To-do list',
     '_DONE_LIST':'Done list',
     '_MANAGE_TO_DO_LIST':'Manage your to do list',
-    '_SUBTITLE_CLICK_ON_CHECKBOX':'Click on checkbox or drag and drop to done'
+    '_SUBTITLE_CLICK_ON_CHECKBOX':'Click on checkbox or drag and drop to done',
+    '_IMAGE':'Image',
+    '_DELETE':'Delete'
 };

@@ -20,8 +20,9 @@
         <div class="card-container">
 
             <div class="card" *ngIf="newToDo!=null">
-                    <label class="label-container">
-                    <input id="newtodo-title" type="text" [(ngModel)]="newToDo.Title" (keyup.enter)="addToDo()" name="Title">
+                <label class="label-container">
+                    <input id="newtodo-title" type="text" [(ngModel)]="newToDo.Title" (keyup.enter)="addToDo()"
+                        name="Title">
 
                     <input type="checkbox" name="IsFinished" [(ngModel)]="newToDo.IsFinished" name="IsFinished">
                     <span class="checkmark checkmark-unchecked"></span>
@@ -35,7 +36,19 @@
                     <span class="checkmark checkmark-unchecked"></span>
                 </label>
 
-                <button (click)="onDeleteToDoItemClicked(item)" class="item-btn"></button>
+                <button (click)="onShowDropDownClicked(item)" class="item-btn"></button>
+                <div class="dropdown-content" *ngIf="showDropdown && item.Id==selectedItemId">
+                    <div class="dropdown-item">
+                        <img src="../../../assets/icons/image.png" class="dropdown-img">
+                        <a (click)="onLogoutClicked()" class="dropdown-label">{{'_IMAGE' | translate}}</a>
+                    </div>
+
+                    <div class="dropdown-item">
+                        <img src="../../../assets/icons/delete-item.png" class="dropdown-img">
+                        <a (click)=" onDeleteToDoItemClicked(item)" class="dropdown-label">{{'_DELETE' | translate}}</a>
+                    </div>
+
+                </div>
             </div>
         </div>
 
@@ -49,28 +62,16 @@
 
         <hr>
 
-
         <div class="card-container">
+            <div class="card" *ngFor="let item of doneList">
+                <label class="label-container">{{item.Title}}
+                    <input type="checkbox" name="title" value="{item.IsFinished}" [(ngModel)]="item.IsFinished"
+                        (change)="onDoneItemStatusChanged(item)">
+                    <span class="checkmark checkmark-checked"></span>
+                </label>
 
-                <div class="card" *ngFor="let item of doneList">
-                    <label class="label-container">{{item.Title}}
-                        <input type="checkbox" name="title" value="{item.IsFinished}" [(ngModel)]="item.IsFinished"
-                            (change)="onDoneItemStatusChanged(item)">
-                        <span class="checkmark checkmark-checked"></span>
-                    </label>
-    
-                    <button (click)="onDeleteDoneItemClicked(item)" class="item-btn delete-item"></button>
-                </div>
+                <button (click)="onDeleteDoneItemClicked(item)" class="item-btn delete-item"></button>
             </div>
-        <!-- <ul>
-            <li *ngFor="let item of doneList">
-                <input type="checkbox" value="{item.IsFinished}" [(ngModel)]="item.IsFinished"
-                    (change)="onDoneItemStatusChanged(item)">
-
-                {{item.Title}}
-
-                <button (click)="onDeleteDoneItemClicked(item)">Delete</button>
-            </li>
-        </ul> -->
+        </div>
     </div>
 </div>
