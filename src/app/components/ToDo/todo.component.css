@@ -1,0 +1,40 @@
+.global-container{
+    margin-left: 250px;
+    margin-right: 250px;
+    position: relative;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    height: 100vh;
+}
+
+.title{
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.subtitle{
+    font-size:12px;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: gray;
+}
+
+.col{
+    width: 45%;
+    padding:20px;
+    position: absolute;
+    background-color: #f5f6fa;
+    height: 100vh;
+}
+
+.left{
+    float: left;
+}
+
+
+.right{
+     float: right;
+     left: 54%;
+}
+
