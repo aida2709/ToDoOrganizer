@@ -19,6 +19,7 @@ export class ToDoService {
 
     public addToDo(toDoItem: ToDoItem) {
         toDoItem.IsFinished = false;
+        toDoItem.Image=null;
         if (!toDoItem.Id)//if item already has its id, do not update it
             toDoItem.Id = this.getNextId();
 

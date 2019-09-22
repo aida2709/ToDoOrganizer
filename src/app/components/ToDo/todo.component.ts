@@ -16,8 +16,9 @@ export class ToDoComponent implements OnInit {
     public newToDo: ToDoItem;
     public todoList: ToDoItem[];
     public doneList: ToDoItem[];
-    public selectedItemId:any=null;
-    public showDropdown:boolean=false;
+    public selectedItemId: any = null;
+    public selectedItemForImageUpload: ToDoItem = null;
+    public showDropdown: boolean = false;
 
     constructor(private _todoService: ToDoService, private _translateService: TranslateService,
         private _usersService: UsersService,
@@ -89,8 +90,8 @@ export class ToDoComponent implements OnInit {
             this.getToDoList();
         }
 
-        this.showDropdown=false;
-        this.selectedItemId=null;
+        this.showDropdown = false;
+        this.selectedItemId = null;
     }
 
     onDeleteDoneItemClicked(item) {
@@ -99,13 +100,41 @@ export class ToDoComponent implements OnInit {
         }
     }
 
-    onShowDropDownClicked(item:ToDoItem){
-        this.showDropdown=!this.showDropdown;
-        this.selectedItemId=item.Id;
+    onShowDropDownClicked(item: ToDoItem) {
+        this.showDropdown = !this.showDropdown;
+        this.selectedItemId = item.Id;
     }
 
-    editToDo(item: ToDoItem){
+    editToDo(item: ToDoItem) {
         this._todoService.editToDoItem(item);
         this.getToDoList();
+    }
+
+    uploadImage(item: ToDoItem) {
+        this.selectedItemForImageUpload = item;
+        document.getElementById('imgupload').click();
+    }
+
+    onUploadImageClicked($event) {
+        if (this.selectedItemForImageUpload == null) {
+            this.showDropdown = false;
+            return;
+        }
+
+        var reader = new FileReader();
+        reader.onload = (e) => {
+            localStorage.setItem('image', e.target.result.toString());
+        }
+
+        reader.readAsDataURL($event.target.files[0]);
+
+        let image = localStorage.getItem('image');
+        this.selectedItemForImageUpload.Image = image;
+        localStorage.removeItem('image');
+        this._todoService.editToDoItem(this.selectedItemForImageUpload);
+        this.getToDoList();
+
+        this.selectedItemForImageUpload = null;
+        this.showDropdown = false;
     }
 }

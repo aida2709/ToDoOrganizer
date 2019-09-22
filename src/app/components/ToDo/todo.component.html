@@ -30,29 +30,35 @@
                     name="Title">
             </div>
 
-            <div class="card" *ngFor="let item of todoList">
+            <input type="file" id="imgupload" style="display:none" (change)="onUploadImageClicked($event)" />
 
-                <label class="label-container">
-                    <input type="checkbox" name="title" value="{item.IsFinished}" [(ngModel)]="item.IsFinished"
-                        (change)="onToDoItemStatusChanged(item)">
-                    <span class="checkmark checkmark-unchecked"></span>
-                </label>
+            <div class="main-card" *ngFor="let item of todoList">
+                <img *ngIf="item.Image" src="{{item.Image}}" class="todo-item-image">
 
-                <input class="todo-title" type="text" [(ngModel)]="item.Title" (keyup.enter)="editToDo(item)"
-                    name="Title">
+                <div class="card">
+                    <label class="label-container">
+                        <input type="checkbox" name="title" value="{item.IsFinished}" [(ngModel)]="item.IsFinished"
+                            (change)="onToDoItemStatusChanged(item)">
+                        <span class="checkmark checkmark-unchecked"></span>
+                    </label>
 
-                <button (click)="onShowDropDownClicked(item)" class="item-btn"></button>
-                <div class="dropdown-content" *ngIf="showDropdown && item.Id==selectedItemId">
-                    <div class="dropdown-item">
-                        <img src="../../../assets/icons/image.png" class="dropdown-img">
-                        <a (click)="onLogoutClicked()" class="dropdown-label">{{'_IMAGE' | translate}}</a>
+                    <input class="todo-title" type="text" [(ngModel)]="item.Title" (keyup.enter)="editToDo(item)"
+                        name="Title">
+
+                    <button (click)="onShowDropDownClicked(item)" class="item-btn"></button>
+                    <div class="dropdown-content" *ngIf="showDropdown && item.Id==selectedItemId">
+                        <div class="dropdown-item">
+                            <img src="../../../assets/icons/image.png" class="dropdown-img">
+                            <a (click)="uploadImage(item)" class="dropdown-label">{{'_IMAGE' | translate}}</a>
+                        </div>
+
+                        <div class="dropdown-item">
+                            <img src="../../../assets/icons/delete-item.png" class="dropdown-img">
+                            <a (click)=" onDeleteToDoItemClicked(item)"
+                                class="dropdown-label">{{'_DELETE' | translate}}</a>
+                        </div>
+
                     </div>
-
-                    <div class="dropdown-item">
-                        <img src="../../../assets/icons/delete-item.png" class="dropdown-img">
-                        <a (click)=" onDeleteToDoItemClicked(item)" class="dropdown-label">{{'_DELETE' | translate}}</a>
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -68,14 +74,18 @@
         <hr>
 
         <div class="card-container">
-            <div class="card" *ngFor="let item of doneList">
-                <label class="label-container">{{item.Title}}
-                    <input type="checkbox" name="title" value="{item.IsFinished}" [(ngModel)]="item.IsFinished"
-                        (change)="onDoneItemStatusChanged(item)">
-                    <span class="checkmark checkmark-checked"></span>
-                </label>
+            <div class="main-card" *ngFor="let item of doneList">
+                <img *ngIf="item.Image" src="{{item.Image}}" class="todo-item-image">
 
-                <button (click)="onDeleteDoneItemClicked(item)" class="item-btn delete-item"></button>
+                <div class="card">
+                    <label class="label-container">{{item.Title}}
+                        <input type="checkbox" name="title" value="{item.IsFinished}" [(ngModel)]="item.IsFinished"
+                            (change)="onDoneItemStatusChanged(item)">
+                        <span class="checkmark checkmark-checked"></span>
+                    </label>
+
+                    <button (click)="onDeleteDoneItemClicked(item)" class="item-btn delete-item"></button>
+                </div>
             </div>
         </div>
     </div>
