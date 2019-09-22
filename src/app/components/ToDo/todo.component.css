@@ -27,9 +27,11 @@
     padding: 20px;
     position: absolute;
     background-color: #f5f6fa;
-    height: 100vh;
+    min-height: 100vh;
     border-radius: 10px;
-    overflow-y: overlay;
+    margin-bottom: 50px;
+    /* overflow-y: overlay; 
+     height: 100vh;*/
 }
 
 .left {
