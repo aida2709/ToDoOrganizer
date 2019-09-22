@@ -54,10 +54,8 @@ export class LoginComponent implements OnInit {
         this.showPassword = !this.showPassword;
         if (this.showPassword) {
             document.getElementById('passwordId').setAttribute('type', 'text');
-            document.getElementById('togglePassword').className = "fa fa-lg fa-eye-slash toggle-password";
         } else {
             document.getElementById('passwordId').setAttribute('type', 'password');
-            document.getElementById('togglePassword').className = "fa fa-lg fa-eye toggle-password";
 
         }
     }
