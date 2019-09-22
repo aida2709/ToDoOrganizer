@@ -13,6 +13,7 @@ import { TranslateService } from './services/translate/translate.service';
 import { TranslatePipe } from './services/translate';
 import { ToDoComponent } from './components/ToDo/todo.component';
 import { ToolbarComponent } from './components/Toolbar/toolbar.component';
+import {DragDropModule} from '@angular/cdk/drag-drop'
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ToolbarComponent } from './components/Toolbar/toolbar.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    DragDropModule
   ],
   providers: [
     UsersService,

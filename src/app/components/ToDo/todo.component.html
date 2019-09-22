@@ -9,7 +9,10 @@
         <p class="subtitle">{{'_SUBTITLE_CLICK_ON_CHECKBOX' | translate}}</p>
     </div>
 
-    <div class="col left">
+    <div class="col left" 
+    cdkDropList #toDoList="cdkDropList" [cdkDropListData]="todoList"
+    [cdkDropListConnectedTo]="[completedList]"
+    (cdkDropListDropped)="onDrop($event)">
         <div class="div-options">
             <h4>{{'_TODO_LIST' | translate}}</h4>
             <button (click)="onAddToDoItemClicked()" class="add-btn header-btn"></button>
@@ -32,7 +35,7 @@
 
             <input type="file" id="imgupload" style="display:none" (change)="onUploadImageClicked($event)" />
 
-            <div class="main-card" *ngFor="let item of todoList">
+            <div class="main-card" *ngFor="let item of todoList" cdkDrag>
                 <img *ngIf="item.Image" src="{{item.Image}}" class="todo-item-image">
 
                 <div class="card">
@@ -65,7 +68,10 @@
 
     </div>
 
-    <div class="col right">
+    <div class="col right"
+    cdkDropList #completedList="cdkDropList" [cdkDropListData]="doneList"
+    [cdkDropListConnectedTo]="[toDoList]"
+    (cdkDropListDropped)="onDrop($event)">
         <div class="div-options">
             <h4>{{'_DONE_LIST' | translate}}</h4>
             <button (click)="onDeleteAllDoneItemsClicked()" class="delete-btn header-btn"></button>
@@ -74,7 +80,7 @@
         <hr>
 
         <div class="card-container">
-            <div class="main-card" *ngFor="let item of doneList">
+            <div class="main-card" *ngFor="let item of doneList" cdkDrag>
                 <img *ngIf="item.Image" src="{{item.Image}}" class="todo-item-image">
 
                 <div class="card">

@@ -4,6 +4,7 @@ import { TranslateService } from 'src/app/services/translate';
 import { ToDoItem } from 'src/app/interfaces/ToDoItem';
 import { UsersService } from 'src/app/services/UsersService';
 import { Router } from '@angular/router';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 
 @Component({
@@ -14,6 +15,8 @@ import { Router } from '@angular/router';
 
 export class ToDoComponent implements OnInit {
     public newToDo: ToDoItem;
+    public transferedObject: ToDoItem;
+
     public todoList: ToDoItem[];
     public doneList: ToDoItem[];
     public selectedItemId: any = null;
@@ -124,7 +127,7 @@ export class ToDoComponent implements OnInit {
 
         var reader = new FileReader();
         reader.onload = (e: Event) => {
-            localStorage.setItem('image',  reader.result.toString());
+            localStorage.setItem('image', reader.result.toString());
         }
 
         reader.readAsDataURL($event.target.files[0]);
@@ -137,5 +140,36 @@ export class ToDoComponent implements OnInit {
 
         this.selectedItemForImageUpload = null;
         this.showDropdown = false;
+    }
+
+    onDrop(event: CdkDragDrop<string[]>) {
+        if (event.previousContainer === event.container) {
+            moveItemInArray(event.container.data,
+                event.previousIndex,
+                event.currentIndex);
+        } else {
+            let item = JSON.stringify(event.previousContainer.data[event.previousIndex]);
+            if (item != undefined) {
+                this.transferedObject = JSON.parse(item);
+
+                if (this.transferedObject.IsFinished == true) {
+                    if (this._todoService.removeDoneItem(this.transferedObject)) {
+                        this._todoService.addToDo(this.transferedObject);
+                    }
+                }
+                else {
+
+                    if (this._todoService.removeToDoItem(this.transferedObject)) {
+                        this._todoService.addDone(this.transferedObject);
+                    }
+                }
+            }
+
+            transferArrayItem(event.previousContainer.data,
+                event.container.data,
+                event.previousIndex, event.currentIndex);
+        }
+
+
     }
 }
