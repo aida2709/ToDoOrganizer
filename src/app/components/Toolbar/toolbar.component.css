@@ -70,7 +70,6 @@
   }
 
   .dropdown-content {
-   /*  display: none; */
    position: absolute;
    right: 250px;
    top: 50px;
