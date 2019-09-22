@@ -47,12 +47,22 @@
             <button (click)="onDeleteAllDoneItemsClicked()" class="delete-btn header-btn"></button>
         </div>
 
-
-
         <hr>
-        <br>
 
-        <ul>
+
+        <div class="card-container">
+
+                <div class="card" *ngFor="let item of doneList">
+                    <label class="label-container">{{item.Title}}
+                        <input type="checkbox" name="title" value="{item.IsFinished}" [(ngModel)]="item.IsFinished"
+                            (change)="onDoneItemStatusChanged(item)">
+                        <span class="checkmark checkmark-checked"></span>
+                    </label>
+    
+                    <button (click)="onDeleteDoneItemClicked(item)" class="item-btn delete-item"></button>
+                </div>
+            </div>
+        <!-- <ul>
             <li *ngFor="let item of doneList">
                 <input type="checkbox" value="{item.IsFinished}" [(ngModel)]="item.IsFinished"
                     (change)="onDoneItemStatusChanged(item)">
@@ -61,6 +71,6 @@
 
                 <button (click)="onDeleteDoneItemClicked(item)">Delete</button>
             </li>
-        </ul>
+        </ul> -->
     </div>
 </div>

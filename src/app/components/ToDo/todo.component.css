@@ -186,4 +186,9 @@ h4 {
     border: none;
 }
 
+.delete-item{
+    background: url('../../../assets/icons/delete-item.png') no-repeat padding-box center;
+
+}
+
 /*END List items*/
