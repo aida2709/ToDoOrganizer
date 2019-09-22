@@ -122,8 +122,8 @@ export class ToDoComponent implements OnInit {
         }
 
         var reader = new FileReader();
-        reader.onload = (e) => {
-            localStorage.setItem('image', e.target.result.toString());
+        reader.onload = (e: Event) => {
+            localStorage.setItem('image',  reader.result.toString());
         }
 
         reader.readAsDataURL($event.target.files[0]);
