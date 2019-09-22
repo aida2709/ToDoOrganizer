@@ -11,7 +11,7 @@ import { TranslateService } from 'src/app/services/translate';
     styleUrls: ['./login.component.css']
 })
 
-export class LoginCompoent implements OnInit {
+export class LoginComponent implements OnInit {
     private isError: boolean = false;
     private errorMessage: string;
     private showPassword = false;
