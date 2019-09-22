@@ -22,7 +22,7 @@
             <div class="card" *ngIf="newToDo!=null">
                 <label class="label-container">
                     <input type="checkbox" name="IsFinished" [(ngModel)]="newToDo.IsFinished" name="IsFinished">
-                    <span class="checkmark "
+                    <span class="checkmark"
                         [ngClass]="{'checkmark-unchecked':newToDo.IsFinished != true,'checkmark-checked':newToDo.IsFinished == true}"></span>
                 </label>
 

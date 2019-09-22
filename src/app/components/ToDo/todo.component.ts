@@ -49,6 +49,7 @@ export class ToDoComponent implements OnInit {
 
     addToDo() {
         if (this.newToDo.Title.trim() == '') {
+            this.newToDo = null;
             return;
         }
 
