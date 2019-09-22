@@ -147,6 +147,23 @@ export class ToDoComponent implements OnInit {
             moveItemInArray(event.container.data,
                 event.previousIndex,
                 event.currentIndex);
+
+            let item = JSON.stringify(event.previousContainer.data[event.currentIndex]);
+            if (item != undefined)
+                this.transferedObject = JSON.parse(item);
+
+
+            if (this.transferedObject.IsFinished == true) {
+                if (this._todoService.removeToDoItem(this.transferedObject)) {
+                    this._todoService.addToDoOnSpecificPosition(this.transferedObject, event.currentIndex);
+                }
+            }
+            else {
+
+                if (this._todoService.removeDoneItem(this.transferedObject)) {
+                    this._todoService.addDoneItemOnSpecificPosition(this.transferedObject, event.currentIndex);
+                }
+            }
         } else {
             let item = JSON.stringify(event.previousContainer.data[event.previousIndex]);
             if (item != undefined) {
@@ -154,13 +171,13 @@ export class ToDoComponent implements OnInit {
 
                 if (this.transferedObject.IsFinished == true) {
                     if (this._todoService.removeDoneItem(this.transferedObject)) {
-                        this._todoService.addToDo(this.transferedObject);
+                        this._todoService.addToDoOnSpecificPosition(this.transferedObject, event.currentIndex);
                     }
                 }
                 else {
 
                     if (this._todoService.removeToDoItem(this.transferedObject)) {
-                        this._todoService.addDone(this.transferedObject);
+                        this._todoService.addDoneItemOnSpecificPosition(this.transferedObject, event.currentIndex);
                     }
                 }
             }
@@ -169,7 +186,5 @@ export class ToDoComponent implements OnInit {
                 event.container.data,
                 event.previousIndex, event.currentIndex);
         }
-
-
     }
 }
