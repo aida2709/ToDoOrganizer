@@ -21,20 +21,28 @@
 
             <div class="card" *ngIf="newToDo!=null">
                 <label class="label-container">
-                    <input id="newtodo-title" type="text" [(ngModel)]="newToDo.Title" (keyup.enter)="addToDo()"
-                        name="Title">
-
                     <input type="checkbox" name="IsFinished" [(ngModel)]="newToDo.IsFinished" name="IsFinished">
-                    <span class="checkmark checkmark-unchecked"></span>
+                    <span class="checkmark " 
+                    [ngClass]="{'checkmark-unchecked':newToDo.IsFinished != true,'checkmark-checked':newToDo.IsFinished == true}"></span>
                 </label>
+
+                <input id="newtodo-title" type="text" [(ngModel)]="newToDo.Title" (keyup.enter)="addToDo()"
+                        name="Title">
             </div>
 
             <div class="card" *ngFor="let item of todoList">
-                <label class="label-container">{{item.Title}}
+
+                    
+
+                <label class="label-container">
                     <input type="checkbox" name="title" value="{item.IsFinished}" [(ngModel)]="item.IsFinished"
                         (change)="onToDoItemStatusChanged(item)">
                     <span class="checkmark checkmark-unchecked"></span>
                 </label>
+
+                <input class="todo-title" 
+                    type="text" [(ngModel)]="item.Title" (keyup.enter)="editToDo(item)"
+                    name="Title">
 
                 <button (click)="onShowDropDownClicked(item)" class="item-btn"></button>
                 <div class="dropdown-content" *ngIf="showDropdown && item.Id==selectedItemId">

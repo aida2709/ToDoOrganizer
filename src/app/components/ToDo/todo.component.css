@@ -186,6 +186,11 @@ h4 {
     background: url('../../../assets/icons/delete-item.png') no-repeat padding-box center;
 }
 
+.todo-title{
+    border: none;
+    width: 80%;
+}
+
 /*END List items*/
 
 /*Dropdown*/

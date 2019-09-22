@@ -83,7 +83,7 @@ export class ToDoService {
         return false;
     }
 
-    public removeAllDoneItems() {
+    public removeAllDoneItems(): void{
         localStorage.removeItem('doneList');
     }
 
@@ -107,5 +107,18 @@ export class ToDoService {
         }
 
         return id;
+    }
+
+    public editToDoItem(editedItem: ToDoItem):void{
+        this.todoList = JSON.parse(localStorage.getItem('todoList'));
+
+        if (this.todoList != null) {
+            for (let i = 0; i < this.todoList.length; i++) {
+                if (this.todoList[i].Id === editedItem.Id) {
+                    this.todoList.splice(i,1,editedItem)
+                    localStorage.setItem('todoList', JSON.stringify(this.todoList));
+                }
+            }
+        }
     }
 }

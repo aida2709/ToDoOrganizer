@@ -103,4 +103,9 @@ export class ToDoComponent implements OnInit {
         this.showDropdown=!this.showDropdown;
         this.selectedItemId=item.Id;
     }
+
+    editToDo(item: ToDoItem){
+        this._todoService.editToDoItem(item);
+        this.getToDoList();
+    }
 }
