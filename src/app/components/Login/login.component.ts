@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
     private submitted: boolean=false;
 
     constructor(private _formBuilder: FormBuilder, private _usersService: UsersService, private router: Router, private _translateService: TranslateService) {
-        if (_usersService.isLogged()) {
+        if (_usersService.isLogged() && _usersService.isRememberMeActivated()) {
             this.router.navigate(['/home']);
         }
     }

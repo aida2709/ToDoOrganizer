@@ -34,6 +34,19 @@ export class UsersService {
         return false;
     }
 
+    public isRememberMeActivated():boolean{
+        var data = localStorage.getItem('loggedUser');
+
+        if (data) {
+            this.user = JSON.parse(data);
+            if (this.user  && this.user.RememberMe == true ) {
+                return true;
+            }
+            return false;
+        }
+        return false;
+    }
+
     public logout(): void {
         localStorage.removeItem('loggedUser');
     }
