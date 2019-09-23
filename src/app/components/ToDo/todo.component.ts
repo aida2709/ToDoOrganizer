@@ -15,6 +15,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 
 export class ToDoComponent implements OnInit {
     public newToDo: ToDoItem;
+    public image: any;
     public transferedObject: ToDoItem;
 
     public todoList: ToDoItem[];
@@ -117,27 +118,27 @@ export class ToDoComponent implements OnInit {
         document.getElementById('imgupload').click();
     }
 
-    onUploadImageClicked($event) {
+    onUploadImageClicked(event) {
         if (this.selectedItemForImageUpload == null) {
             this.showDropdown = false;
             return;
         }
 
-        var reader = new FileReader();
-        reader.onload = (e: Event) => {
-            localStorage.setItem('image', reader.result.toString());
+        let reader = new FileReader();
+        let file = event.target.files[0];
+
+        if (event.target.files && event.target.files[0]) {
+            reader.readAsDataURL(file);
+
+            reader.onload = () => {
+                this.image = reader.result;
+                this.selectedItemForImageUpload.Image = this.image.toString();
+                this._todoService.editToDoItem(this.selectedItemForImageUpload);
+                this.getToDoList();
+            }
+
+            this.showDropdown = false;
         }
-
-        reader.readAsDataURL($event.target.files[0]);
-
-        let image = localStorage.getItem('image');
-        this.selectedItemForImageUpload.Image = image;
-        localStorage.removeItem('image');
-        this._todoService.editToDoItem(this.selectedItemForImageUpload);
-        this.getToDoList();
-
-        this.selectedItemForImageUpload = null;
-        this.showDropdown = false;
     }
 
     onDrop(event: CdkDragDrop<string[]>) {

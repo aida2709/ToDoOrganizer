@@ -31,7 +31,7 @@
                     name="Title">
             </div>
 
-            <input type="file" id="imgupload" style="display:none" (change)="onUploadImageClicked($event)" />
+            <input type="file" accept=".png, .jpg, .jpeg"  #fileInput id="imgupload" style="display:none" (change)="onUploadImageClicked($event)" />
 
             <div class="main-card" *ngFor="let item of todoList" cdkDrag>
                 <img *ngIf="item.Image" src="{{item.Image}}" class="todo-item-image">
