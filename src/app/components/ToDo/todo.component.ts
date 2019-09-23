@@ -24,9 +24,7 @@ export class ToDoComponent implements OnInit {
     public selectedItemForImageUpload: ToDoItem = null;
     public showDropdown: boolean = false;
 
-    constructor(private _todoService: ToDoService, private _translateService: TranslateService,
-        private _usersService: UsersService,
-        private _router: Router) {
+    constructor(private _todoService: ToDoService, private _translateService: TranslateService) {
     }
 
     ngOnInit(): void {
