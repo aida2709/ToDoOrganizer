@@ -174,15 +174,18 @@ export class ToDoService {
 
         this.getTodoList();
 
-        if (this.todoList == null) {
+        if (this.todoList == null || this.todoList==[]) {
             this.todoList = [];
+            toDoItem.Position = 1;
+            this.todoList.push(toDoItem);
         }
-
-        this.todoList.splice(index, 0, toDoItem);
-        //sort items
-        let count = this.todoList.length;
-        for (let i = 0; i < count; i++) {
-            this.todoList[i].Position = count - i;
+        else {
+            this.todoList.splice(index, 0, toDoItem);
+            //sort items
+            let count = this.todoList.length;
+            for (let i = 0; i < count; i++) {
+                this.todoList[i].Position = count - i;
+            }
         }
 
         localStorage.setItem('todoList', JSON.stringify(this.todoList));
@@ -196,15 +199,18 @@ export class ToDoService {
 
         this.getDoneList();
 
-        if (this.doneList == null) {
+        if (this.doneList == null || this.doneList==[]) {
             this.doneList = [];
+            toDoItem.Position = 1;
+            this.doneList.push(toDoItem);
         }
-
-        this.doneList.splice(index, 0, toDoItem);
-        //sort items
-        let count = this.doneList.length;
-        for (let i = 0; i < count; i++) {
-            this.doneList[i].Position = count - i;
+        else {
+            this.doneList.splice(index, 0, toDoItem);
+            //sort items
+            let count = this.doneList.length;
+            for (let i = 0; i < count; i++) {
+                this.doneList[i].Position = count - i;
+            }
         }
 
         localStorage.setItem('doneList', JSON.stringify(this.doneList));
