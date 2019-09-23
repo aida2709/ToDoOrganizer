@@ -1,7 +1,7 @@
 <div class="container">
     <form [formGroup]="loginForm" class="login-form">
 
-        <div  class="wrapper">
+        <div class="wrapper">
             <div *ngIf="isError==true" class="error">
                 {{errorMessage}}
             </div>
@@ -12,16 +12,17 @@
 
             <div class="form-control">
                 <input type="text" class="form-input" [formControl]="loginForm.controls['email']"
-                [ngClass]="{'has-error':!loginForm.controls['email'].valid && submitted}"
-                     placeholder="{{'_EMAIL' | translate}}" name="emailInput">
+                    [ngClass]="{'has-error':!loginForm.controls['email'].valid && submitted}"
+                    placeholder="{{'_EMAIL' | translate}}" name="emailInput">
             </div>
 
             <div class="form-control">
                 <input type="password" id="passwordId" class="form-input" [formControl]="loginForm.controls['password']"
-                [ngClass]="{'has-error':!loginForm.controls['password'].valid && submitted}"
-                     placeholder="{{'_PASSWORD' | translate}}" name="passwordInput">
+                    [ngClass]="{'has-error':!loginForm.controls['password'].valid && submitted}"
+                    placeholder="{{'_PASSWORD' | translate}}" name="passwordInput">
 
-                <span [ngClass]="{'fa-eye':!showPassword, 'fa-eye-slash':showPassword}"  class="fa fa-lg toggle-password" (click)="toggle()" id="togglePassword"></span>
+                <span [ngClass]="{'fa-eye':!showPassword, 'fa-eye-slash':showPassword}" class="fa fa-lg toggle-password"
+                    (click)="toggle()" id="togglePassword"></span>
             </div>
 
             <div class="row login-form-section">
@@ -29,7 +30,7 @@
                     <label class="label-container">{{'_REMEMBER_ME' | translate}}
                         <input type="checkbox" name="rememberMe" [formControl]="loginForm.controls['rememberMe']">
                         <span class="checkmark"></span>
-                      </label>
+                    </label>
                 </div>
                 <div class="col m--align-right m-login__form-right">
                     <a href="javascript:;" id="m_login_forget_password"
@@ -38,8 +39,8 @@
             </div>
 
             <div>
-                <button class="signin-button" (click)="onSignInClicked(loginForm.value)"
-                   >{{'_SIGN_IN' | translate}}</button>
+                <button class="signin-button"
+                    (click)="onSignInClicked(loginForm.value)">{{'_SIGN_IN' | translate}}</button>
             </div>
 
         </div>

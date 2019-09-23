@@ -280,48 +280,44 @@ button, input {
     }
 }
 
-@media (max-width: 1100px){
-    .wrapper{
+@media (max-width: 1100px) {
+    .wrapper {
         margin-left: 20%;
         margin-right: 20%;
     }
 }
-@media (max-width: 800px){
-    .container{
+
+@media (max-width: 800px) {
+    .container {
         top: 10%;
     }
 }
 
-@media (max-width: 600px){
-    .wrapper{
+@media (max-width: 600px) {
+    .wrapper {
         margin-left: 5%;
         margin-right: 5%;
     }
-
-    .logo-img{
+    .logo-img {
         width: 120px;
     }
-
-    .container{
+    .container {
         top: 10%;
     }
 }
 
-@media (max-width: 500px){
-    .form-input, .signin-button{
+@media (max-width: 500px) {
+    .form-input, .signin-button {
         font-size: 10px;
         padding: 10px;
     }
-
-    .toggle-password{
+    .toggle-password {
         margin-top: -25px;
     }
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
-    .container{
+    .container {
         top: 10%!important;
     }
-    
-  }
-
+}

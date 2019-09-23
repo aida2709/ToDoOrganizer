@@ -16,13 +16,13 @@ export class LoginComponent implements OnInit {
     private errorMessage: string;
     private showPassword = false;
     loginForm: FormGroup;
-    private submitted: boolean=false;
+    private submitted: boolean = false;
 
     constructor(private _formBuilder: FormBuilder, private _usersService: UsersService, private router: Router, private _translateService: TranslateService) {
         if (_usersService.isLogged() && _usersService.isRememberMeActivated()) {
             this.router.navigate(['/home']);
         }
-        else{
+        else {
             localStorage.removeItem('loggedUser');
         }
     }
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
 
 
     onSignInClicked(value: any) {
-        this.submitted=true;
+        this.submitted = true;
         if (!this.loginForm.valid)
             return;
 
