@@ -27,7 +27,7 @@
                         [ngClass]="{'checkmark-unchecked':newToDo.IsFinished != true,'checkmark-checked':newToDo.IsFinished == true}"></span>
                 </label>
 
-                <input id="newtodo-title" type="text" [(ngModel)]="newToDo.Title" (keyup.enter)="addToDo()"
+                <input id="newtodo-title" autofocus type="text" [(ngModel)]="newToDo.Title" (keyup.enter)="addToDo()"
                     name="Title">
             </div>
 

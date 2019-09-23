@@ -44,7 +44,6 @@ export class ToDoComponent implements OnInit {
         this.newToDo = new ToDoItem();
         this.newToDo.Title = '';
         this.newToDo.IsFinished = false;
-        //document.getElementById('newtodo-title').focus();
     }
 
     addToDo() {

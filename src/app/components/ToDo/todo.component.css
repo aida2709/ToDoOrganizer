@@ -2,6 +2,10 @@ input, label, button, a {
     font-family: 'Nunito Sans', sans-serif !important;
 }
 
+input:focus {
+    outline:none !important;
+}
+
 /* List positioning */
 
 .global-container {
