@@ -22,12 +22,12 @@
 
             <div class="card" *ngIf="newToDo!=null">
                 <label class="label-container">
-                    <input type="checkbox" name="IsFinished" [(ngModel)]="newToDo.IsFinished" name="IsFinished">
+                    <input type="checkbox" name="IsFinished" [(ngModel)]="newToDo.IsFinished" name="IsFinished" id="newtodo-checkbox">
                     <span class="checkmark"
                         [ngClass]="{'checkmark-unchecked':newToDo.IsFinished != true,'checkmark-checked':newToDo.IsFinished == true}"></span>
                 </label>
 
-                <input id="newtodo-title" autofocus type="text" [(ngModel)]="newToDo.Title" (keyup.enter)="addToDo()"
+                <input id="newtodo-title" autofocus type="text" [(ngModel)]="newToDo.Title" (keyup.enter)="addToDo()" (focusout)="addToDo()" 
                     name="Title">
             </div>
 

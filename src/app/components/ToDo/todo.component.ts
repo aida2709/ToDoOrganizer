@@ -17,6 +17,7 @@ export class ToDoComponent implements OnInit {
     public newToDo: ToDoItem;
     public image: any;
     public transferedObject: ToDoItem;
+    public isCheckboxClicked: boolean = false;
 
     public todoList: ToDoItem[];
     public doneList: ToDoItem[];
@@ -30,6 +31,8 @@ export class ToDoComponent implements OnInit {
     ngOnInit(): void {
         this.getToDoList();
         this.getDoneList();
+
+        
     }
 
     getToDoList() {
@@ -47,7 +50,7 @@ export class ToDoComponent implements OnInit {
     }
 
     addToDo() {
-        if (this.newToDo.Title.trim() == '') {
+        if (this.newToDo==null || this.newToDo.Title==undefined || this.newToDo.Title.length==0 || this.newToDo.Title.trim() == '') {
             this.newToDo = null;
             return;
         }
