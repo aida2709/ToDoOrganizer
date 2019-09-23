@@ -3,7 +3,7 @@ input, label, button, a {
 }
 
 input:focus {
-    outline:none !important;
+    outline: none !important;
 }
 
 /* List positioning */
@@ -281,24 +281,17 @@ h4 {
     }
 }
 
-@media(min-width:1407px){
-    .col{
+@media(min-width:1407px) {
+    .col {
         width: 47%;
     }
 }
 
-@media(min-width:1020px){
-    .col{
+@media(min-width:1020px) {
+    .col {
         width: 46%;
     }
 }
-
-@media(max-width:1019px){
-    .col{
-        width: 44%;
-    }
-}
-
 
 @media(max-width:1115px) {
     .todo-title {
@@ -336,14 +329,29 @@ h4 {
     }
 }
 
-@media(max-width:700px) {
-    .todo-item-image {
-        height: 130px;
+@media(max-width:1019px) {
+    /* .col{
+        width: 44%;
+    } */
+    .col, .right, .left {
+        width: 94%;
+        display: block;
+        position: relative;
+    }
+    .right {
+        left: 0%;
+        right: 6%;
     }
 }
 
 @media(max-width:1205px) and (min-width:880px) {
     .todo-item-image {
         height: 240px;
+    }
+}
+
+@media(max-width:700px) {
+    .todo-item-image {
+        height: 130px;
     }
 }
