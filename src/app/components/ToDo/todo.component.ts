@@ -26,9 +26,7 @@ export class ToDoComponent implements OnInit {
     constructor(private _todoService: ToDoService, private _translateService: TranslateService,
         private _usersService: UsersService,
         private _router: Router) {
-
     }
-
 
     ngOnInit(): void {
         this.getToDoList();
@@ -152,16 +150,14 @@ export class ToDoComponent implements OnInit {
             if (item != undefined)
                 this.transferedObject = JSON.parse(item);
 
-
             if (this.transferedObject.IsFinished == true) {
-                if (this._todoService.removeToDoItem(this.transferedObject)) {
-                    this._todoService.addToDoOnSpecificPosition(this.transferedObject, event.currentIndex);
+                if (this._todoService.removeDoneItem(this.transferedObject)) {
+                    this._todoService.addDoneItemOnSpecificPosition(this.transferedObject, event.currentIndex);
                 }
             }
             else {
-
-                if (this._todoService.removeDoneItem(this.transferedObject)) {
-                    this._todoService.addDoneItemOnSpecificPosition(this.transferedObject, event.currentIndex);
+                if (this._todoService.removeToDoItem(this.transferedObject)) {
+                    this._todoService.addToDoOnSpecificPosition(this.transferedObject, event.currentIndex);
                 }
             }
         } else {

@@ -189,7 +189,7 @@ export class ToDoService {
     }
 
     public addDoneItemOnSpecificPosition(toDoItem: ToDoItem, index: number) {
-        toDoItem.IsFinished = false;
+        toDoItem.IsFinished = true;
 
         if (!toDoItem.Id)//if item already has its id, do not update it
             toDoItem.Id = this.getNextId();
