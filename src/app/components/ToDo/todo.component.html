@@ -80,11 +80,13 @@
                 <img *ngIf="item.Image" src="{{item.Image}}" class="todo-item-image">
 
                 <div class="card">
-                    <label class="label-container">{{item.Title}}
+                    <label class="label-container">
                         <input type="checkbox" name="title" value="{item.IsFinished}" [(ngModel)]="item.IsFinished"
                             (change)="onDoneItemStatusChanged(item)">
                         <span class="checkmark checkmark-checked"></span>
                     </label>
+
+                    <p style="display: inline;" class="done-title">{{item.Title}}</p>
 
                     <button (click)="onDeleteDoneItemClicked(item)" class="item-btn delete-item"></button>
                 </div>

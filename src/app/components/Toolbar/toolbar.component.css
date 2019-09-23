@@ -1,4 +1,3 @@
-
 #navigation-container {
     margin: 0 auto;
     height: 70px;
@@ -48,7 +47,7 @@
 }
 
 .btn {
-    background:url(../../../assets/icons/avatar.png) no-repeat padding-box center;
+    background: url(../../../assets/icons/avatar.png) no-repeat padding-box center;
     background-color: #dadadd;
     background-size: 20px 25px;
     height: 25px;
@@ -57,9 +56,9 @@
     border: 1px solid #d2d3d5;
     float: right;
     margin-top: 10px;
-  }
+}
 
-  .username{
+.username {
     position: absolute;
     display: inline;
     padding-top: 20px;
@@ -67,32 +66,84 @@
     right: 250px;
     font-size: 12px;
     font-weight: bold;
-  }
+}
 
-  .dropdown-content {
-   position: absolute;
-   right: 250px;
-   top: 50px;
-   background-color: #fff;
-   min-width: 160px;
-   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-   z-index: 1;
-  }
-  
-  .logout {
-    color: #7f7f7f!important;
-    font-weight: bold;
+.dropdown-content {
+    position: absolute;
+    right: 250px;
+    top: 60px;
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.logout {
+    color: black;
     padding: 12px 16px;
-    font-size:12px!important;
-    line-height:20px!important;
+    line-height: 20px!important;
     text-decoration: none;
     display: block;
-    margin-right: 60px;
-  }
+    margin-right: 40px;
+    font-size: 12px!important;
+    font-weight: bold;
+}
 
-  .logoutImg{
+.logoutImg {
     position: absolute;
     float: left;
     left: 5px;
     top: 5px;
-  }
+}
+
+@media(min-width:1432px) {
+    .navigation-bar {
+        height: 80px!important;
+    }
+    .logoImg {
+        width: 115px;
+        margin-top: 20px;
+    }
+    .username {
+        font-size: 16px;
+        padding-top: 30px;
+    }
+    .btn {
+        height: 30px;
+        width: 10px;
+        margin-top: 17px;
+    }
+    .dropdown-content {
+        top: 80px;
+    }
+    .logout {
+        line-height: 40px!important
+    }
+    .logoutImg {
+        top: 15px;
+    }
+}
+
+@media(max-width:1215px) {
+    .logoImg {
+        margin-left: 180px;
+    }
+    #menu {
+        margin-right: 180px;
+    }
+    .username, .dropdown-content {
+        right: 180px;
+    }
+}
+
+@media(max-width:1215px) and (min-width:601px) {
+    .logoImg {
+        margin-left: 10px;
+    }
+    #menu {
+        margin-right: 10px;
+    }
+    .username, .dropdown-content {
+        right: 10px;
+    }
+}

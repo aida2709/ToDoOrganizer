@@ -1,18 +1,27 @@
+input, label, button, a {
+    font-family: 'Nunito Sans', sans-serif !important;
+}
+
 .container {
-    position: absolute;
-    top: 30%;
-    left: 0;
-    width: 100%;
     font-size: 12px;
     color: #aba5b6;
+    position: absolute;
+    top: 29%;
+    display: table;
+    width: 100%;
 }
 
 .login-form {
-    text-align: center;
-    vertical-align: middle;
     margin-left: auto;
     margin-right: auto;
-    width: 300px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.wrapper {
+    margin-left: 39%;
+    margin-right: 39%;
 }
 
 .form-control {
@@ -31,6 +40,7 @@
 .logo-img {
     width: 140px;
     margin-bottom: 30px;
+    cursor: pointer;
 }
 
 .row {
@@ -107,16 +117,17 @@ button, input {
 
 .signin-button {
     width: 100%;
-    background-color: #1563ff;
+    background-color: #2d4ef5;
     color: white;
     cursor: pointer;
     border: none;
     padding: 15px;
     font-size: 12px;
     margin-top: 25px;
-    -webkit-box-shadow: 0 12px 15px -6px #1563ff;
-    -moz-box-shadow: 0 12px 15px -6px #1563ff;
-    box-shadow: 0 12px 15px -6px #1563ff;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 12px 15px -6px #2d4ef5;
+    -moz-box-shadow: 0 12px 15px -6px #2d4ef5;
+    box-shadow: 0 12px 15px -6px #2d4ef5;
 }
 
 ::placeholder {
@@ -230,4 +241,41 @@ button, input {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+}
+
+@media(min-width:1432px) {
+    .logo-img {
+        width: 200px;
+    }
+    .form-input {
+        font-size: 16px;
+        padding: 20px;
+    }
+    .label-container, .m-link {
+        font-size: 14px;
+        padding-left: 25px;
+    }
+    .checkmark {
+        height: 18px;
+        width: 18px;
+    }
+    .form-control {
+        margin-top: 25px;
+    }
+    .toggle-password {
+        margin-top: -35px;
+    }
+    .label-container .checkmark:after {
+        left: 4px;
+        top: 0px;
+        width: 9px;
+        height: 11px;
+    }
+    .signin-button {
+        padding: 20px;
+        font-size: 14px;
+    }
+    .error {
+        font-size: 14px;
+    }
 }
