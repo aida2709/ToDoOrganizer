@@ -22,6 +22,9 @@ export class LoginComponent implements OnInit {
         if (_usersService.isLogged() && _usersService.isRememberMeActivated()) {
             this.router.navigate(['/home']);
         }
+        else{
+            localStorage.removeItem('loggedUser');
+        }
     }
 
     ngOnInit(): void {
