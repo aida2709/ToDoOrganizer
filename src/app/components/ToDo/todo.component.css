@@ -354,4 +354,9 @@ h4 {
     .todo-item-image {
         height: 130px;
     }
+
+    .global-container{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
 }

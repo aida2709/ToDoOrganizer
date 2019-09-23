@@ -147,3 +147,17 @@
         right: 10px;
     }
 }
+
+@media(max-width:600px){
+    .logoImg{
+        margin-left: 10px;
+    }
+
+    #menu{
+        margin-right: 10px;
+    }
+
+    .username{
+        right: 10px;
+    }
+}
