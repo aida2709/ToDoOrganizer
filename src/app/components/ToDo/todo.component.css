@@ -257,11 +257,13 @@ h4 {
 
 /*END Dropdown*/
 
+
+
 @media(min-width:1432px) and (max-width:1640px) {
     .todo-item-image {
         height: 250px;
     }
-    .todo-title, .label-container {
+    .todo-title, .label-container, .done-title {
         font-size: 14px;
     }
     h4 {
@@ -271,9 +273,9 @@ h4 {
 
 @media(min-width:1641px) {
     .todo-item-image {
-        height: 320px;
+        height: 350px;
     }
-    .todo-title, .label-container {
+    .todo-title, .label-container, .done-title {
         font-size: 16px;
     }
     h4 {
@@ -289,7 +291,17 @@ h4 {
 
 @media(min-width:1020px) {
     .col {
-        width: 46%;
+        width: 44%;
+    }
+}
+ 
+@media(min-width:1700px) {
+    .col {
+        width: 48%;
+    }
+
+    .right{
+        right: 0;
     }
 }
 
@@ -315,36 +327,25 @@ h4 {
     h4 {
         font-size: 14px;
     }
-    .todo-title, .label-container, .done-title {
-        font-size: 10px;
-    }
     .right {
         left: 52%;
     }
 }
 
-@media(max-width:1020px) {
-    .right {
-        left: 50%;
-    }
-}
 
-@media(max-width:1019px) {
-    /* .col{
+
+ @media(max-width:1020px) {
+   
+    .col {
         width: 44%;
-    } */
-    .col, .right, .left {
-        width: 94%;
-        display: block;
-        position: relative;
+        
     }
     .right {
-        left: 0%;
-        right: 6%;
+        left:51%;
     }
-}
+} 
 
-@media(max-width:1205px) and (min-width:880px) {
+@media(max-width:1215px) and (min-width:880px) {
     .todo-item-image {
         height: 240px;
     }
@@ -352,11 +353,25 @@ h4 {
 
 @media(max-width:700px) {
     .todo-item-image {
-        height: 130px;
+        height: 250px;
     }
 
     .global-container{
         margin-left: 10px;
         margin-right: 10px;
+    }
+
+    .col{
+        min-height: fit-content
+    }
+
+    .right{
+        left: 0;
+        float: left;
+    }
+
+    .left, .right {
+        width: 92%;
+        position: relative;
     }
 }

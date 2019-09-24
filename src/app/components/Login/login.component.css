@@ -308,7 +308,7 @@ button, input {
 
 @media (max-width: 500px) {
     .form-input, .signin-button {
-        font-size: 10px;
+        font-size: 12px;
         padding: 10px;
     }
     .toggle-password {
