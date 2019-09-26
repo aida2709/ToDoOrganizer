@@ -124,6 +124,7 @@ h4 {
 
 .done-title {
     color: #8b8b8b;
+    display: inline;
 }
 
 .item-btn {
