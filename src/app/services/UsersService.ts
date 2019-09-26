@@ -8,7 +8,7 @@ export class UsersService {
     private user: User;
 
     public login(email, password, rememberMe): boolean {
-        if (email == "test@test.com" && password == "test") {
+        if (email === "test@test.com" && password === "test") {
             this.user = new User();
             this.user.Email = email;
             this.user.Username = "Username";

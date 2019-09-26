@@ -23,7 +23,7 @@ export class ToDoService {
     public getDoneList() {
         this.doneList = JSON.parse(localStorage.getItem('doneList'));
 
-        if (this.doneList == null)
+        if (!this.doneList)
             return null;
 
         return this.doneList.sort(this.sortByPosition);
@@ -168,7 +168,7 @@ export class ToDoService {
 
         this.getTodoList();
 
-        if (!this.todoList || this.todoList == []) {
+        if (!this.todoList || this.todoList === []) {
             this.todoList = [];
             toDoItem.Position = 1;
             this.todoList.push(toDoItem);
@@ -193,7 +193,7 @@ export class ToDoService {
 
         this.getDoneList();
 
-        if (!this.doneList || this.doneList == []) {
+        if (!this.doneList || this.doneList === []) {
             this.doneList = [];
             toDoItem.Position = 1;
             this.doneList.push(toDoItem);
