@@ -31,8 +31,6 @@ export class ToDoComponent implements OnInit {
     ngOnInit(): void {
         this.getToDoList();
         this.getDoneList();
-
-        
     }
 
     getToDoList() {
@@ -50,12 +48,12 @@ export class ToDoComponent implements OnInit {
     }
 
     addToDo() {
-        if (this.newToDo==null || this.newToDo.Title==undefined || this.newToDo.Title.length==0 || this.newToDo.Title.trim() == '') {
+        if (!this.newToDo || !this.newToDo.Title || this.newToDo.Title.trim() === '') {
             this.newToDo = null;
             return;
         }
 
-        if (this.newToDo.IsFinished == true) {
+        if (this.newToDo.IsFinished) {
             this._todoService.addDone(this.newToDo);
             this.getDoneList();
         }
@@ -119,7 +117,7 @@ export class ToDoComponent implements OnInit {
     }
 
     onUploadImageClicked(event) {
-        if (this.selectedItemForImageUpload == null) {
+        if (!this.selectedItemForImageUpload) {
             this.showDropdown = false;
             return;
         }
@@ -148,10 +146,10 @@ export class ToDoComponent implements OnInit {
                 event.currentIndex);
 
             let item = JSON.stringify(event.previousContainer.data[event.currentIndex]);
-            if (item != undefined)
+            if (item)
                 this.transferedObject = JSON.parse(item);
 
-            if (this.transferedObject.IsFinished == true) {
+            if (this.transferedObject.IsFinished) {
                 if (this._todoService.removeDoneItem(this.transferedObject)) {
                     this._todoService.addDoneItemOnSpecificPosition(this.transferedObject, event.currentIndex);
                 }
@@ -163,10 +161,10 @@ export class ToDoComponent implements OnInit {
             }
         } else {
             let item = JSON.stringify(event.previousContainer.data[event.previousIndex]);
-            if (item != undefined) {
+            if (item) {
                 this.transferedObject = JSON.parse(item);
 
-                if (this.transferedObject.IsFinished == true) {
+                if (this.transferedObject.IsFinished) {
                     if (this._todoService.removeDoneItem(this.transferedObject)) {
                         this._todoService.addToDoOnSpecificPosition(this.transferedObject, event.currentIndex);
                     }

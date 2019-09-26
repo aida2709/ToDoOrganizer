@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
 
         var result = this._usersService.login(value.email, value.password, value.rememberMe);
 
-        if (result == true) {
+        if (result) {
             this.isError = false;
             this.router.navigate(['home']);
         }

@@ -31,5 +31,4 @@ export class ToolbarComponent implements OnInit {
         this._usersService.logout();
         this._router.navigate(['/login']);
     }
-
 }

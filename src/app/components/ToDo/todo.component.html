@@ -24,7 +24,7 @@
                 <label class="label-container">
                     <input type="checkbox" name="IsFinished" [(ngModel)]="newToDo.IsFinished" name="IsFinished" id="newtodo-checkbox">
                     <span class="checkmark"
-                        [ngClass]="{'checkmark-unchecked':newToDo.IsFinished != true,'checkmark-checked':newToDo.IsFinished == true}"></span>
+                        [ngClass]="{'checkmark-unchecked':newToDo.IsFinished != true,'checkmark-checked':newToDo.IsFinished === true}"></span>
                 </label>
 
                 <input id="newtodo-title" autofocus type="text" [(ngModel)]="newToDo.Title" (keyup.enter)="addToDo()" (focusout)="addToDo()" 
@@ -47,7 +47,7 @@
                         name="Title">
 
                     <button (click)="onShowDropDownClicked(item)" class="item-btn"></button>
-                    <div class="dropdown-content" *ngIf="showDropdown && item.Id==selectedItemId">
+                    <div class="dropdown-content" *ngIf="showDropdown && item.Id===selectedItemId">
                         <div class="dropdown-item">
                             <img src="../../../assets/icons/image.png" class="dropdown-img">
                             <a (click)="uploadImage(item)" class="dropdown-label">{{'_IMAGE' | translate}}</a>
