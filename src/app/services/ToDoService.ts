@@ -7,15 +7,17 @@ export class ToDoService {
     private todoList: ToDoItem[];
     private doneList: ToDoItem[];
 
+    private sortByPosition(a, b) {
+        return b.Position - a.Position;
+    }
+
     public getTodoList() {
         this.todoList = JSON.parse(localStorage.getItem('todoList'));
 
-        if (this.todoList == null)
+        if (!this.todoList)
             return null;
 
-        return this.todoList.sort(function (a, b) {
-            return b.Position - a.Position;
-        });
+        return this.todoList.sort(this.sortByPosition);
     }
 
     public getDoneList() {
@@ -24,9 +26,7 @@ export class ToDoService {
         if (this.doneList == null)
             return null;
 
-        return this.doneList.sort(function (a, b) {
-            return b.Position - a.Position;
-        });
+        return this.doneList.sort(this.sortByPosition);
     }
 
     public addToDo(toDoItem: ToDoItem) {
@@ -38,7 +38,7 @@ export class ToDoService {
 
         this.todoList = JSON.parse(localStorage.getItem('todoList'));
 
-        if (this.todoList == null) {
+        if (!this.todoList) {
             this.todoList = [];
         }
 
@@ -55,7 +55,7 @@ export class ToDoService {
 
         this.doneList = JSON.parse(localStorage.getItem('doneList'));
 
-        if (this.doneList == null) {
+        if (!this.doneList) {
             this.doneList = [];
         }
 
@@ -66,16 +66,13 @@ export class ToDoService {
     public removeToDoItem(toDoItem: ToDoItem): boolean {
         this.todoList = JSON.parse(localStorage.getItem('todoList'));
 
-        if (this.todoList != null) {
-            for (let i = 0; i < this.todoList.length; i++) {
-                if (this.todoList[i].Id === toDoItem.Id) {
-                    this.todoList.splice(i, 1);
-                    localStorage.setItem('todoList', JSON.stringify(this.todoList));
-                    return true;
-                }
-            }
-
-            return false;
+        if (this.todoList) {
+            let i = this.todoList.findIndex(x => x.Id === toDoItem.Id);
+            if (i < 0)
+                return false;
+            this.todoList.splice(i, 1);
+            localStorage.setItem('todoList', JSON.stringify(this.todoList));
+            return true;
         }
 
         return false;
@@ -84,16 +81,14 @@ export class ToDoService {
     public removeDoneItem(doneItem: ToDoItem): boolean {
         this.doneList = JSON.parse(localStorage.getItem('doneList'));
 
-        if (this.doneList != null) {
-            for (let i = 0; i < this.doneList.length; i++) {
-                if (this.doneList[i].Id === doneItem.Id) {
-                    this.doneList.splice(i, 1);
-                    localStorage.setItem('doneList', JSON.stringify(this.doneList));
-                    return true;
-                }
-            }
+        if (this.doneList) {
+            let i = this.doneList.findIndex(x => x.Id === doneItem.Id);
+            if (i < 0)
+                return false;
 
-            return false;
+            this.doneList.splice(i, 1);
+            localStorage.setItem('doneList', JSON.stringify(this.doneList));
+            return true;
         }
 
         return false;
@@ -108,14 +103,14 @@ export class ToDoService {
         this.doneList = JSON.parse(localStorage.getItem('doneList'));
         let id = 1;
 
-        if (this.todoList != null) {
+        if (this.todoList) {
             this.todoList.map(function (obj) {
                 if (obj.Id >= id)
                     id = obj.Id + 1;
             });
         }
 
-        if (this.doneList != null) {
+        if (this.doneList) {
             this.doneList.map(function (obj) {
                 if (obj.Id >= id)
                     id = obj.Id + 1;
@@ -129,7 +124,7 @@ export class ToDoService {
         this.todoList = JSON.parse(localStorage.getItem('todoList'));
         let position = 1;
 
-        if (this.todoList != null) {
+        if (this.todoList) {
             this.todoList.map(function (obj) {
                 if (obj.Position >= position)
                     position = obj.Position + 1;
@@ -143,7 +138,7 @@ export class ToDoService {
         this.doneList = JSON.parse(localStorage.getItem('doneList'));
         let position = 1;
 
-        if (this.doneList != null) {
+        if (this.doneList) {
             this.doneList.map(function (obj) {
                 if (obj.Position >= position)
                     position = obj.Position + 1;
@@ -156,12 +151,11 @@ export class ToDoService {
     public editToDoItem(editedItem: ToDoItem): void {
         this.todoList = JSON.parse(localStorage.getItem('todoList'));
 
-        if (this.todoList != null) {
-            for (let i = 0; i < this.todoList.length; i++) {
-                if (this.todoList[i].Id === editedItem.Id) {
-                    this.todoList.splice(i, 1, editedItem)
-                    localStorage.setItem('todoList', JSON.stringify(this.todoList));
-                }
+        if (this.todoList) {
+            let i=this.todoList.findIndex(x=> x.Id === editedItem.Id);
+            if(i>=0){
+                this.todoList.splice(i, 1, editedItem)
+                localStorage.setItem('todoList', JSON.stringify(this.todoList));
             }
         }
     }
@@ -174,7 +168,7 @@ export class ToDoService {
 
         this.getTodoList();
 
-        if (this.todoList == null || this.todoList==[]) {
+        if (!this.todoList || this.todoList == []) {
             this.todoList = [];
             toDoItem.Position = 1;
             this.todoList.push(toDoItem);
@@ -199,7 +193,7 @@ export class ToDoService {
 
         this.getDoneList();
 
-        if (this.doneList == null || this.doneList==[]) {
+        if (!this.doneList || this.doneList == []) {
             this.doneList = [];
             toDoItem.Position = 1;
             this.doneList.push(toDoItem);

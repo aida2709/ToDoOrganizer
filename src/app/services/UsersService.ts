@@ -26,7 +26,7 @@ export class UsersService {
 
         if (data) {
             this.user = JSON.parse(data);
-            if (this.user /* && this.user.RememberMe == true */) {
+            if (this.user) {
                 return true;
             }
             return false;
@@ -34,15 +34,12 @@ export class UsersService {
         return false;
     }
 
-    public isRememberMeActivated():boolean{
+    public isRememberMeActivated(): boolean {
         var data = localStorage.getItem('loggedUser');
 
         if (data) {
             this.user = JSON.parse(data);
-            if (this.user  && this.user.RememberMe == true ) {
-                return true;
-            }
-            return false;
+            return (this.user && this.user.RememberMe);
         }
         return false;
     }
@@ -54,9 +51,6 @@ export class UsersService {
     public getUsername(): string {
         this.user = JSON.parse(localStorage.getItem('loggedUser'));
 
-        if (this.user)
-            return this.user.Username;
-
-        return '';
+        return this.user ? this.user.Username : '';
     }
 }
