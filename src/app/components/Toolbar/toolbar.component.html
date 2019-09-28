@@ -8,7 +8,9 @@
                 <a class="btn" ></a>
 
                 <div class="dropdown-content" *ngIf="showDropdown">
-                    <img src="../../../assets/icons/logout.png" class="logoutImg">
+                    <!-- <img src="../../../assets/icons/logout.png" class="logoutImg"> -->
+                    <i class="material-icons logoutImg">exit_to_app</i>
+
                     <a  (click)="onLogoutClicked()" class="logout">{{'_LOGOUT' | translate}}</a>
                 </div>
             </li>

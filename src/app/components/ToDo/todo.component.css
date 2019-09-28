@@ -73,21 +73,20 @@ h4 {
     position: absolute;
     float: right;
     right: 22px;
-    background-color: #e6e8ef;
     height: 25px;
     width: 25px;
     border-radius: 50%;
     cursor: pointer;
+    color: #66676a;
 }
 
 .add-btn {
-    background: url('../../../assets/icons/add.png') no-repeat padding-box center;
+    text-align: center;
     border: 1px solid #e6e8ef;
     background-color: #e6e8ef;
 }
 
 .delete-btn {
-    background: url('../../../assets/icons/delete.png') no-repeat padding-box center;
     border: none!important;
 }
 
@@ -252,10 +251,11 @@ h4 {
 
 .dropdown-img {
     float: left;
-    margin-top: 10px;
+    margin-top: 7px;
     margin-left: 5px;
     margin-right: 5px;
-}
+    color: #7f7f7f;
+  }
 
 /*END Dropdown*/
 

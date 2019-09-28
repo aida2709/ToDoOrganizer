@@ -13,7 +13,7 @@
         [cdkDropListConnectedTo]="[completedList]" (cdkDropListDropped)="onDrop($event)">
         <div class="div-options">
             <h4>{{'_TODO_LIST' | translate}}</h4>
-            <button (click)="onAddToDoItemClicked()" class="add-btn header-btn"></button>
+            <i class="material-icons add-btn header-btn" (click)="onAddToDoItemClicked()">add</i>
         </div>
 
         <hr>
@@ -49,12 +49,14 @@
                     <button (click)="onShowDropDownClicked(item)" class="item-btn"></button>
                     <div class="dropdown-content" *ngIf="showDropdown && item.Id===selectedItemId">
                         <div class="dropdown-item">
-                            <img src="../../../assets/icons/image.png" class="dropdown-img">
+                            <i class="material-icons dropdown-img">image</i>
+
                             <a (click)="uploadImage(item)" class="dropdown-label">{{'_IMAGE' | translate}}</a>
                         </div>
 
                         <div class="dropdown-item">
-                            <img src="../../../assets/icons/delete-item.png" class="dropdown-img">
+                            <i class="material-icons dropdown-img">delete_outline</i>
+
                             <a (click)=" onDeleteToDoItemClicked(item)"
                                 class="dropdown-label">{{'_DELETE' | translate}}</a>
                         </div>
@@ -70,7 +72,10 @@
         [cdkDropListConnectedTo]="[toDoList]" (cdkDropListDropped)="onDrop($event)">
         <div class="div-options">
             <h4>{{'_DONE_LIST' | translate}}</h4>
-            <button (click)="onDeleteAllDoneItemsClicked()" class="delete-btn header-btn"></button>
+            <i
+            class="material-icons delete-btn header-btn"
+            (click)="onDeleteAllDoneItemsClicked()"
+          >delete_sweep</i>
         </div>
 
         <hr>

@@ -170,7 +170,6 @@ export class ToDoComponent implements OnInit {
                     }
                 }
                 else {
-
                     if (this._todoService.removeToDoItem(this.transferedObject)) {
                         this._todoService.addDoneItemOnSpecificPosition(this.transferedObject, event.currentIndex);
                     }
