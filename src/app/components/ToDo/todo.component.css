@@ -70,6 +70,7 @@ h4 {
 }
 
 .header-btn {
+    text-align: center;
     position: absolute;
     float: right;
     right: 22px;
@@ -81,7 +82,6 @@ h4 {
 }
 
 .add-btn {
-    text-align: center;
     border: 1px solid #e6e8ef;
     background-color: #e6e8ef;
 }
@@ -96,7 +96,7 @@ h4 {
 
 .card-container {
     margin-top: 20px;
-    text-align:left;
+    text-align: left;
 }
 
 .main-card {
@@ -202,6 +202,7 @@ h4 {
 #newtodo-title {
     border: none;
     width: 87%;
+    font-size: 13px;
 }
 
 #newtodo-title :focus {
@@ -251,15 +252,13 @@ h4 {
 
 .dropdown-img {
     float: left;
-    margin-top: 7px;
+    margin-top: 10px;
     margin-left: 5px;
     margin-right: 5px;
     color: #7f7f7f;
-  }
+}
 
 /*END Dropdown*/
-
-
 
 @media(min-width:1432px) and (max-width:1640px) {
     .todo-item-image {
@@ -277,11 +276,21 @@ h4 {
     .todo-item-image {
         height: 350px;
     }
-    .todo-title, .label-container, .done-title {
+    .todo-title, .label-container, .done-title, #newtodo-title {
         font-size: 16px;
     }
     h4 {
         font-size: 18px;
+    }
+    .dropdown-label {
+        font-size: 12px;
+      }
+    .header-btn {
+        font-size: 24px;
+        padding: 3px;
+    }
+    .checkmark {
+        top: 2px;
     }
 }
 
@@ -296,15 +305,24 @@ h4 {
         width: 44%;
     }
 }
- 
+
 @media(min-width:1700px) {
     .col {
         width: 48%;
     }
-
-    .right{
+    .right {
         right: 0;
     }
+}
+
+@media (max-width: 1400px) {
+    .todo-title, #newtodo-title {
+        width: 90%;
+    }
+
+    .material-icons{
+        font-size:22px!important;
+      }
 }
 
 @media(max-width:1115px) {
@@ -334,18 +352,14 @@ h4 {
     }
 }
 
-
-
- @media(max-width:1020px) {
-   
+@media(max-width:1020px) {
     .col {
         width: 44%;
-        
     }
     .right {
-        left:51%;
+        left: 51%;
     }
-} 
+}
 
 @media(max-width:1215px) and (min-width:880px) {
     .todo-item-image {
@@ -357,21 +371,17 @@ h4 {
     .todo-item-image {
         height: 250px;
     }
-
-    .global-container{
+    .global-container {
         margin-left: 10px;
         margin-right: 10px;
     }
-
-    .col{
-        min-height: fit-content
+    .col {
+        min-height: fit-content;
     }
-
-    .right{
+    .right {
         left: 0;
         float: left;
     }
-
     .left, .right {
         width: 92%;
         position: relative;
