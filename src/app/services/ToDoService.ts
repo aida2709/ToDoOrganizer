@@ -168,7 +168,7 @@ export class ToDoService {
 
         this.getTodoList();
 
-        if (!this.todoList || this.todoList === []) {
+        if (!this.todoList || this.todoList === [] || this.todoList === null) {
             this.todoList = [];
             toDoItem.Position = 1;
             this.todoList.push(toDoItem);
@@ -193,7 +193,7 @@ export class ToDoService {
 
         this.getDoneList();
 
-        if (!this.doneList || this.doneList === []) {
+        if (!this.doneList || this.doneList === [] || this.doneList === null) {
             this.doneList = [];
             toDoItem.Position = 1;
             this.doneList.push(toDoItem);

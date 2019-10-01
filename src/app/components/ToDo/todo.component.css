@@ -317,7 +317,7 @@ h4 {
 
 @media (max-width: 1400px) {
     .todo-title, #newtodo-title {
-        width: 90%;
+        width: 80%;
     }
 
     .material-icons{
